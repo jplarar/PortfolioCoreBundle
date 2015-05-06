@@ -74,13 +74,25 @@ class Student {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\OneToMany(targetEntity="Toefl", mappedBy="studentId")
+     */
+    protected $toefls;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SubjectDropout", mappedBy="studentId")
+     */
+    protected $subjectDropouts;
 
     #########################
     ##      CONSTRUCTOR    ##
     #########################
 
-    // none.
+    public function __construct()
+    {
+        $this->toefls = new ArrayCollection();
+        $this->subjectDropouts = new ArrayCollection();
+    }
 
     #########################
     ##   SPECIAL METHODS   ##
@@ -92,6 +104,68 @@ class Student {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
+    /**
+     * Add toefl
+     *
+     * @param Toefl $toefl
+     * @return Student
+     */
+    public function addToefl(Toefl $toefl)
+    {
+        $this->toefls[] = $toefl;
+        return $this;
+    }
+
+    /**
+     * Remove toefl
+     *
+     * @param Toefl $toefl
+     */
+    public function removeToefl(Toefl $toefl)
+    {
+        $this->toefls->removeElement($toefl);
+    }
+
+    /**
+     * Get toefls
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getToefls()
+    {
+        return $this->toefls;
+    }
+
+    /**
+     * Add SubjectDropout
+     *
+     * @param SubjectDropout $subjectDropout
+     * @return Student
+     */
+    public function addSubjectDropout(SubjectDropout $subjectDropout)
+    {
+        $this->subjectDropouts[] = $subjectDropout;
+        return $this;
+    }
+
+    /**
+     * Remove SubjectDropout
+     *
+     * @param SubjectDropout $subjectDropout
+     */
+    public function removeSubjectDropout(SubjectDropout $subjectDropout)
+    {
+        $this->subjectDropouts->removeElement($subjectDropout);
+    }
+
+    /**
+     * Get SubjectDropouts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubjectDropouts()
+    {
+        return $this->subjectDropouts;
+    }
 
 }
