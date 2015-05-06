@@ -127,7 +127,7 @@ class Student {
     /**
      * @ORM\OneToMany(targetEntity="AddictionAwareness", mappedBy="studentId")
      */
-    protected $addictionAwarenesss;
+    protected $addictionsAwareness;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -142,9 +142,10 @@ class Student {
         $this->$sports = new ArrayCollection();
         $this->$studentGroups = new ArrayCollection();
         $this->$representativeTeams = new ArrayCollection();
+        $this->internationalPrograms = new ArrayCollection();
         $this->$culturalDiffusions = new ArrayCollection();
         $this->$changeGrades = new ArrayCollection();
-        $this->$addictionAwarenesss = new ArrayCollection();
+        $this->$addictionsAwareness = new ArrayCollection();
     }
 
     #########################
@@ -314,8 +315,8 @@ class Student {
     public function setAdmissionDate($admissionDate)
     {
         $this->admissionDate = $admissionDate;
-    }
 
+        return $this;
     }
 
     /**
@@ -360,6 +361,8 @@ class Student {
     public function setGpa($gpa)
     {
         $this->gpa = $gpa;
+
+        return $this;
     }
 
     /**
@@ -446,7 +449,7 @@ class Student {
      */
     public function removeExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
     {
-        $this->ExtemporaneousExams->removeElement($extemporaneousExam);
+        $this->extemporaneousExams->removeElement($extemporaneousExam);
     }
 
     /**
@@ -691,7 +694,7 @@ class Student {
      */
     public function addAddictionAwareness(AddictionAwareness $addictionAwareness)
     {
-        $this->addictionAwarenesss[] = $addictionAwareness;
+        $this->addictionsAwareness[] = $addictionAwareness;
         return $this;
     }
 
@@ -702,17 +705,17 @@ class Student {
      */
     public function removeAddictionAwareness(AddictionAwareness $addictionAwareness)
     {
-        $this->addictionAwarenesss->removeElement($addictionAwareness);
+        $this->addictionsAwareness->removeElement($addictionAwareness);
     }
 
     /**
-     * Get addictionAwarenesss
+     * Get addictionsAwareness
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAddictionAwarenesss()
+    public function getAddictionsAwareness()
     {
-        return $this->addictionAwarenesss;
+        return $this->addictionsAwareness;
     }
 
 }
