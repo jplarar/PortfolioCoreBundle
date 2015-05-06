@@ -32,11 +32,7 @@ class SubjectDropout {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Student", inversedBy="subjectDropouts")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
-     */
-    protected $studentId;
+    // none.
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -53,8 +49,6 @@ class SubjectDropout {
     #########################
     ## GETTERs AND SETTERs ##
     #########################
-
-    // none.
     
     /**
      * Get subjectDropoutId

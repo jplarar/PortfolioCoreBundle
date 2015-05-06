@@ -84,6 +84,51 @@ class Student {
      */
     protected $subjectDropouts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ExtemporaneousExam", mappedBy="studentId")
+     */
+    protected $extemporaneousExams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SocialService", mappedBy="studentId")
+     */
+    protected $socialServices;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Sport", mappedBy="studentId")
+     */
+    protected $sports;
+
+    /**
+     * @ORM\OneToMany(targetEntity="StudentGroup", mappedBy="studentId")
+     */
+    protected $studentGroups;
+
+    /**
+     * @ORM\OneToMany(targetEntity="RepresentativeTeam", mappedBy="studentId")
+     */
+    protected $representativeTeams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="InternationalProgram", mappedBy="studentId")
+     */
+    protected $internationalPrograms;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CulturalDiffusions", mappedBy="studentId")
+     */
+    protected $culturalDiffusions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ChangeGrade", mappedBy="studentId")
+     */
+    protected $changeGrades;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AddictionAwareness", mappedBy="studentId")
+     */
+    protected $addictionAwarenesss;
+
     #########################
     ##      CONSTRUCTOR    ##
     #########################
@@ -92,6 +137,14 @@ class Student {
     {
         $this->toefls = new ArrayCollection();
         $this->subjectDropouts = new ArrayCollection();
+        $this->$extemporaneousExams = new ArrayCollection();
+        $this->$socialServices = new ArrayCollection();
+        $this->$sports = new ArrayCollection();
+        $this->$studentGroups = new ArrayCollection();
+        $this->$representativeTeams = new ArrayCollection();
+        $this->$culturalDiffusions = new ArrayCollection();
+        $this->$changeGrades = new ArrayCollection();
+        $this->$addictionAwarenesss = new ArrayCollection();
     }
 
     #########################
@@ -263,6 +316,8 @@ class Student {
         $this->admissionDate = $admissionDate;
     }
 
+    }
+
     /**
      * Get admissionDate
      *
@@ -308,36 +363,35 @@ class Student {
     }
 
     /**
-     * Get gpa
+     * Add toefl
      *
-     * @return string
-     */
-    public function getGpa()
-    {
-        return $this->gpa;
-    }
-
-    /**
-     * Set units
-     *
-     * @param integer $units
+     * @param Toefl $toefl
      * @return Student
      */
-    public function setUnits($units)
+    public function addToefl(Toefl $toefl)
     {
-        $this->units = $units;
-
+        $this->toefls[] = $toefl;
         return $this;
     }
 
     /**
-     * Get units
+     * Remove toefl
      *
-     * @return integer
+     * @param Toefl $toefl
      */
-    public function getUnits()
+    public function removeToefl(Toefl $toefl)
     {
-        return $this->units;
+        $this->toefls->removeElement($toefl);
+    }
+
+    /**
+     * Get toefls
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getToefls()
+    {
+        return $this->toefls;
     }
 
     /**
@@ -352,7 +406,8 @@ class Student {
         return $this;
     }
 
-    /** Remove SubjectDropout
+    /**
+     * Remove SubjectDropout
      *
      * @param SubjectDropout $subjectDropout
      */
@@ -371,35 +426,293 @@ class Student {
         return $this->subjectDropouts;
     }
 
-   /**
-     * Add toefl
+
+    /**
+     * Add ExtemporaneousExam
      *
-     * @param Toefl $toefl
+     * @param ExtemporaneousExam $extemporaneousExam
      * @return Student
      */
-    public function addToefl(Toefl $toefl)
+    public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
     {
-        $this->toefls[] = $toefl;
+        $this->extemporaneousExams[] = $extemporaneousExam;
         return $this;
     }
 
     /**
-     * Get toefls
+     * Remove ExtemporaneousExam
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param ExtemporaneousExam $extemporaneousExam
      */
-    public function getToefls()
+    public function removeExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
     {
-        return $this->toefls;
+        $this->ExtemporaneousExams->removeElement($extemporaneousExam);
     }
 
     /**
-     * Remove toefl
+     * Get ExtemporaneousExams
      *
-     * @param Toefl $toefl
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function removeToefl(Toefl $toefl)
+    public function getExtemporaneousExams()
     {
-        $this->toefls->removeElement($toefl);
+        return $this->extemporaneousExams;
     }
+
+    /**
+     * Add SocialService
+     *
+     * @param SocialService $socialService
+     * @return Student
+     */
+    public function addSocialService(SocialService $socialService)
+    {
+        $this->socialServices[] = $socialService;
+        return $this;
+    }
+
+    /**
+     * Remove SocialService
+     *
+     * @param SocialService $socialService
+     */
+    public function removeSocialService(SocialService $socialService)
+    {
+        $this->socialServices->removeElement($socialService);
+    }
+
+    /**
+     * Get SocialService
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSocialServices()
+    {
+        return $this->socialServices;
+    }
+
+    /**
+     * Add Sport
+     *
+     * @param Sport $sport
+     * @return Student
+     */
+    public function addSport(Sport $sport)
+    {
+        $this->sports[] = $sport;
+        return $this;
+    }
+
+    /**
+     * Remove Sport
+     *
+     * @param Sport $sport
+     */
+    public function removeSport(Sport $sport)
+    {
+        $this->sports->removeElement($sport);
+    }
+
+    /**
+     * Get Sport
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSports()
+    {
+        return $this->sports;
+    }
+
+    /**
+     * Add StudentGroup
+     *
+     * @param StudentGroup $studentGroup
+     * @return Student
+     */
+    public function addStudentGroup(StudentGroup $studentGroup)
+    {
+        $this->studentGroups[] = $studentGroup;
+        return $this;
+    }
+
+	/**
+     * Remove StudentGroup
+     *
+     * @param StudentGroup $studentGroup
+     */
+    public function removeStudentGroup(StudentGroup $studentGroup)
+    {
+        $this->studentGroups->removeElement($studentGroup);
+    }
+
+    /**
+     * Get StudentGroup
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStudentGroups()
+    {
+        return $this->studentGroups;
+    }
+
+    /**
+     * Add representativeTeam
+     *
+     * @param RepresentativeTeam $representativeTeam
+     * @return Student
+     */
+    public function addRepresentativeTeam(RepresentativeTeam $representativeTeam)
+    {
+        $this->representativeTeams[] = $representativeTeam;
+        return $this;
+    }
+
+    /**
+     * Remove representativeTeam
+     *
+     * @param RepresentativeTeam $representativeTeam
+     */
+    public function removeRepresentativeTeam(RepresentativeTeam $representativeTeam)
+    {
+        $this->representativeTeams->removeElement($representativeTeam);
+    }
+
+    /**
+     * Get representativeTeams
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRepresentativeTeams()
+    {
+        return $this->representativeTeams;
+    }
+
+    /**
+     * Add internationalProgram
+     *
+     * @param InternationalProgram $internationalProgram
+     * @return Student
+     */
+    public function addInternationalProgram(InternationalProgram $internationalProgram)
+    {
+        $this->internationalPrograms[] = $internationalProgram;
+        return $this;
+    }
+
+    /**
+     * Remove internationalProgram
+     *
+     * @param InternationalProgram $internationalProgram
+     */
+    public function removeInternationalProgram(InternationalProgram $internationalProgram)
+    {
+        $this->internationalPrograms->removeElement($internationalProgram);
+    }
+
+    /**
+     * Get internationalPrograms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInternationalPrograms()
+    {
+        return $this->internationalPrograms;
+    }
+
+    /**
+     * Add culturalDiffusion
+     *
+     * @param CulturalDiffusion $culturalDiffusion
+     * @return Student
+     */
+    public function addCulturalDiffusion(CulturalDiffusion $culturalDiffusion)
+    {
+        $this->culturalDiffusions[] = $culturalDiffusion;
+        return $this;
+    }
+
+    /**
+     * Remove culturalDiffusion
+     *
+     * @param CulturalDiffusion $culturalDiffusion
+     */
+    public function removeCulturalDiffusion(CulturalDiffusion $culturalDiffusion)
+    {
+        $this->culturalDiffusions->removeElement($culturalDiffusion);
+    }
+
+    /**
+     * Get culturalDiffusions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCulturalDiffusions()
+    {
+        return $this->culturalDiffusions;
+    }
+
+    /**
+     * Add changeGrade
+     *
+     * @param ChangeGrade $changeGrade
+     * @return Student
+     */
+    public function addChangeGrade(ChangeGrade $changeGrade)
+    {
+        $this->changeGrades[] = $changeGrade;
+        return $this;
+    }
+
+    /**
+     * Remove changeGrade
+     *
+     * @param ChangeGrade $changeGrade
+     */
+    public function removeChangeGrade(ChangeGrade $changeGrade)
+    {
+        $this->changeGrades->removeElement($changeGrade);
+    }
+
+    /**
+     * Get changeGrades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChangeGrades()
+    {
+        return $this->changeGrades;
+    }
+
+    /**
+     * Add addictionAwareness
+     *
+     * @param AddictionAwareness $addictionAwareness
+     * @return Student
+     */
+    public function addAddictionAwareness(AddictionAwareness $addictionAwareness)
+    {
+        $this->addictionAwarenesss[] = $addictionAwareness;
+        return $this;
+    }
+
+    /**
+     * Remove addictionAwareness
+     *
+     * @param AddictionAwareness $addictionAwareness
+     */
+    public function removeAddictionAwareness(AddictionAwareness $addictionAwareness)
+    {
+        $this->addictionAwarenesss->removeElement($addictionAwareness);
+    }
+
+    /**
+     * Get addictionAwarenesss
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAddictionAwarenesss()
+    {
+        return $this->addictionAwarenesss;
+    }
+
 }

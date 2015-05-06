@@ -21,11 +21,6 @@ class User implements UserInterface, \Serializable
     protected $userId;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $username;
-
-    /**
      * @ORM\Column(type="string", length=32)
      */
     private $salt;
@@ -86,7 +81,7 @@ class User implements UserInterface, \Serializable
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -110,7 +105,6 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        # TODO: Implement proper Role class
         return array($this->role);
     }
 
@@ -122,9 +116,33 @@ class User implements UserInterface, \Serializable
 
     }
 
-    ########################
-    # SERIALIZABLE METHODS #
-    ########################
+    /**
+     * @inheritDoc
+     */
+    public function isEqualTo(User $user)
+    {
+        if (!$user instanceof User) {
+            return false;
+        }
+
+        if ($this->password !== $user->getPassword()) {
+            return false;
+        }
+
+        if ($this->salt !== $user->getSalt()) {
+            return false;
+        }
+
+        if ($this->email !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    #########################
+    # SERIALIZABLE METHODS
+    #########################
 
     /**
      * @see \Serializable::serialize()
@@ -146,6 +164,12 @@ class User implements UserInterface, \Serializable
             ) = unserialize($serialized);
     }
 
+    public function equals(UserInterface $user)
+    {
+        return $this->getUsername() === $user->getUsername();
+    }
+
+
     #########################
     ## GETTERs AND SETTERs ##
     #########################
@@ -158,19 +182,6 @@ class User implements UserInterface, \Serializable
     public function getUserId()
     {
         return $this->userId;
-    }
-
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
     }
 
     /**
