@@ -167,25 +167,6 @@ class SocialService {
     public function setCompany($company)
     {
         $this->company = $company;
-
-    /**
-     * Get StudentId
-     * @return Student
-     */
-    public function getStudentId()
-    {
-        return $this->studentId;
-    }
-
-    /**
-     * Set StudentId
-     * @param Student $studentId
-     * @return SocialService
-     */
-    public function setStudentId($studentId)
-    {
-        $this->studentId = $studentId;
-        return $this;
     }
 
     /**
@@ -265,5 +246,25 @@ class SocialService {
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return SocialService
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 }

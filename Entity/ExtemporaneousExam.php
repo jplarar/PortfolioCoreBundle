@@ -69,7 +69,6 @@ class ExtemporaneousExam {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
     /**
      * Get extemporaneousExamId
      *
@@ -193,6 +192,7 @@ class ExtemporaneousExam {
     public function getMotive()
     {
         return $this->motive;
+    }
 
     /**
      * Get StudentId
