@@ -315,6 +315,8 @@ class Student {
     {
         $this->admissionDate = $admissionDate;
 
+    }
+
     /**
      * Get admissionDate
      *
@@ -358,6 +360,21 @@ class Student {
     {
         $this->gpa = $gpa;
 
+    }
+
+    /**
+     * Add toefl
+     *
+     * @param Toefl $toefl
+     * @return Student
+     */
+    public function addToefl(Toefl $toefl)
+    {
+        $this->toefls[] = $toefl;
+        return $this;
+    }
+
+    /**
      * Remove toefl
      *
      * @param Toefl $toefl
@@ -368,36 +385,13 @@ class Student {
     }
 
     /**
-     * Get gpa
+     * Get toefls
      *
-     * @return string
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGpa()
+    public function getToefls()
     {
-        return $this->gpa;
-    }
-
-    /**
-     * Set units
-     *
-     * @param integer $units
-     * @return Student
-     */
-    public function setUnits($units)
-    {
-        $this->units = $units;
-
-        return $this;
-    }
-
-    /**
-     * Get units
-     *
-     * @return integer
-     */
-    public function getUnits()
-    {
-        return $this->units;
+        return $this->toefls;
     }
 
     /**
@@ -412,7 +406,8 @@ class Student {
         return $this;
     }
 
-    /** Remove SubjectDropout
+    /**
+     * Remove SubjectDropout
      *
      * @param SubjectDropout $subjectDropout
      */
@@ -441,16 +436,6 @@ class Student {
     public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
     {
         $this->extemporaneousExams[] = $extemporaneousExam;
-
-   /**
-     * Add toefl
-     *
-     * @param Toefl $toefl
-     * @return Student
-     */
-    public function addToefl(Toefl $toefl)
-    {
-        $this->toefls[] = $toefl;
         return $this;
     }
 
@@ -730,13 +715,5 @@ class Student {
         return $this->addictionAwarenesss;
     }
 
-     * Get toefls
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getToefls()
-    {
-        return $this->toefls;
-    }
 
 }
