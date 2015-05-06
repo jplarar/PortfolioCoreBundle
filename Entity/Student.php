@@ -261,6 +261,7 @@ class Student {
     public function setAdmissionDate($admissionDate)
     {
         $this->admissionDate = $admissionDate;
+    }
 
     /**
      * Get admissionDate
@@ -304,14 +305,6 @@ class Student {
     public function setGpa($gpa)
     {
         $this->gpa = $gpa;
-
-     * Remove toefl
-     *
-     * @param Toefl $toefl
-     */
-    public function removeToefl(Toefl $toefl)
-    {
-        $this->toefls->removeElement($toefl);
     }
 
     /**
@@ -398,5 +391,15 @@ class Student {
     public function getToefls()
     {
         return $this->toefls;
+    }
+
+    /**
+     * Remove toefl
+     *
+     * @param Toefl $toefl
+     */
+    public function removeToefl(Toefl $toefl)
+    {
+        $this->toefls->removeElement($toefl);
     }
 }

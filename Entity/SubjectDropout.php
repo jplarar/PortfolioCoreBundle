@@ -75,25 +75,6 @@ class SubjectDropout {
     public function setMotive($motive)
     {
         $this->motive = $motive;
-
-    /**
-     * Get StudentId
-     * @return Student
-     */
-    public function getStudentId()
-    {
-        return $this->studentId;
-    }
-
-    /**
-     * Set StudentId
-     * @param Student $studentId
-     * @return SubjectDropout
-     */
-    public function setStudentId($studentId)
-    {
-        $this->studentId = $studentId;
-        return $this;
     }
 
     /**
@@ -127,5 +108,25 @@ class SubjectDropout {
     public function getPeriod()
     {
         return $this->period;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return SubjectDropout
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 }

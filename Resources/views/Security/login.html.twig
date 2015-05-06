@@ -163,9 +163,9 @@
 <br>
 <div class="login">
     <form action="{{ path('login_check') }}">
-        <input type="text" placeholder="Nómina (Ejemplo: L00123456)" name="_username"><br>
-        <input type="password" placeholder="password" name="_password"><br>
-        <input type="submit" value="Login">
+        <input type="text" id="username" placeholder="Nómina (Ejemplo: L00123456)" name="_username" autofocus><br>
+        <input type="password" id="password" placeholder="password" name="_password"><br>
+        <input type="submit"  value="Login">
         {% if error %}
             <span class="label label-danger">Error</span> {{ error.message }}
         {% endif %}
