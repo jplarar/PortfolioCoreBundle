@@ -1,0 +1,126 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+#wrap{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+}
+
+/*------------------ HEADER --------------------*/
+header {
+	background-color: #333;
+}
+
+header h1 {
+	font-size: 28px;
+	color: #fff;
+	font-weight: normal;
+}
+
+header a {
+	margin: 10px 0;
+	display: block;
+	color: #FF7A5A;
+}
+
+header a:hover {
+	color: #C2393D;
+}
+
+header p {
+	color: #ddd;
+}
+
+/*------------------- NAVIGATION -------------------*/
+nav.navbar-default {
+	border: 0 none;
+	border-radius: 0;
+	background-color: #4FA0B2;
+}
+
+nav .navbar-collapse {
+	padding: 0;
+	border: 0 none;
+}
+
+nav.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+	background-color: #317182;
+	color: #fff;
+}
+
+nav.navbar-default .navbar-nav>li>a {
+	color: #fff;
+}
+
+nav.navbar-default .navbar-nav>li>a:hover, nav.navbar-default .navbar-nav>li>a:focus {
+	color: #18353F;
+}
+
+/*-------------------- SUB-NAV -----------------------*/
+.nav-stacked {
+	border: 1px solid #ddd;
+}
+
+.nav-pills>li>a {
+	border-radius: 0;
+	color: #555;
+}
+
+.nav-pills>li>a:hover, .nav-pills>li>a:focus {
+	background-color: #FF7A5A;
+	color: #fff;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+	background-color: #C2393D;
+}
+
+.nav-stacked>li+li {
+	margin: 0;
+}
+
+/*---------------------- CONTENIDO -----------------------*/
+.contenido {
+	padding-bottom: 40px;
+}
+
+thead {
+	background-color: #FF7A5A;
+	color: #fff;
+	font-weight: normal;
+}
+
+.table>thead>tr>th {
+	border: 0 none;
+}
+
+.max500 {
+	max-width: 500px;
+}
+
+.btn-default {
+	background-color: #4FA0B2;
+	color: #fff;
+	border: transparent;
+	border-radius: 2px;
+	padding: 8px 20px;
+}
+
+.btn-default:hover, .btn-default:focus {
+	background-color: #317182;
+	color: #fff;
+}
+
+/*----------------------- FOOTER ----------------------*/
+footer {
+	clear: both;
+	width: 100%;
+	background-color: #efefef;
+	color: #333;
+	padding: 10px 0;
+}
+

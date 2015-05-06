@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="mystyles.css" >
+</head>
+<body>
+
+	<div id="wrap">
+
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-6">
+						<h1><a href="index.html">Portafolio de Alumnos</a></h1>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a href="#">Cerrar sesión</a>
+						<p>Juan Paulo Lara Rodríguez</p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar-collapse">
+		        <span class="sr-only">Navegación</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
+		    <div class="collapse navbar-collapse" id="my-navbar-collapse">
+		      <ul class="nav navbar-nav">
+		        <li><a href="historia.html">Academico</a></li>
+		        <li><a href="ss.html">Servicio Social</a></li>
+		        <li><a href="act_ext.html">Actividades Extracurriculares</a></li>
+				<li class="active"><a href="pi.html">Programas Internacionales<span class="sr-only">(current)</span></a></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<ul class="nav nav-pills nav-stacked">
+					  <li role="presentation"><a href="pi.html">Historia</a></li>
+					  <li role="presentation"><a href="horario2.html">Horario en el Extranjero</a></li>
+					  <li role="presentation"><a href="calificaciones2.html">Calificaciones en el Extranjero</a></li>
+					  <li role="presentation"><a href="acreditar1.html">Materias por Acreditar</a></li>
+					  <li role="presentation" class="active"><a href="acreditar2.html">Materias Acreditadas</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-9 contenido">
+					<h2>Alumno</h2>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>Clave</th>
+									<th>Materia</th>
+									<th>Calificacion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XXXX-1</td>
+									<td>Materia 1</td>
+									<td>92</td>
+								</tr>
+								<tr>
+									<td>XXXX-2</td>
+									<td>Materia 2</td>
+									<td>70</td>
+								</tr>
+								<tr>
+									<td>XXXX-3</td>
+									<td>Materia 3</td>
+									<td>100</td>
+								</tr>
+								<tr>
+									<td>XXXX-4</td>
+									<td>Materia 4</td>
+									<td>88</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+<!--
+					<h3>Otro title</h3>
+
+					<form class="max500">
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Email address</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputFile">File input</label>
+					    <input type="file" id="exampleInputFile">
+					    <p class="help-block">Example block-level help text here.</p>
+					  </div>
+					  <div class="checkbox">
+					    <label>
+					      <input type="checkbox"> Check me out
+					    </label>
+					  </div>
+					  <button type="submit" class="btn btn-default">Submit</button>
+					</form>-->
+				</div>
+			</div>
+		</div>
+
+		<div id="push"></div>
+
+	</div>
+
+	<footer>
+		<p class="text-center">ITESM</p>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var footer = document.getElementsByTagName("footer")[0];
+			var footerHeight = footer.offsetHeight;
+			footer.style.margin = "-"+footerHeight+"px 0 0";
+			document.getElementById("wrap").style.margin = "0 0 -"+footerHeight+"px";
+			document.getElementById("push").style.height = footerHeight+"px";
+		  }
+	</script>
+</body>
+</html>

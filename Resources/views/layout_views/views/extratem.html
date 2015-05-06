@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Exámenes Extemporáneos</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="mystyles.css" >
+</head>
+<body>
+
+	<div id="wrap">
+
+		<header>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-6">
+						<h1><a href="index.html">Portafolio de Alumnos</a></h1>
+					</div>
+					<div class="col-xs-6 text-right">
+						<a href="#">Cerrar sesión</a>
+						<p>Juan Paulo Lara Rodríguez</p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar-collapse">
+						<span class="sr-only">Navegación</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="my-navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="historia.html">Académico</a></li>
+						<li><a href="ss.html">Servicio Social</a></li>
+						<li><a href="act_ext.html">Actividades Extracurriculares<span class="sr-only">(current)</span></a></li>
+						<li><a href="pi.html">Programas Internacionales</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-3">
+					<ul class="nav nav-pills nav-stacked">
+						<li role="presentation"><a href="historia.html">Historia</a></li>
+						<li role="presentation"><a href="horario.html">Horario</a></li>
+						<li role="presentation"><a href="calificaciones.html">Calificaciones</a></li>
+						<li role="presentation"><a href="bajas.html">Bajas</a></li>
+						<li role="presentation"><a href="toefl.html">Toefl</a></li>
+						<li role="presentation"><a href="cambio.html">Cambio Calificaciones</a></li>
+						<li role="presentation" class="active"><a href="extratem.html">Exámenes Extemporáneos</a></li>
+						<li role="presentation"><a href="cargarAcademico.html">Carga de Datos</a></li>
+					</ul>
+				</ul>
+			</div>
+
+			<div class="col-sm-9 contenido">
+				<h2>Exámenes Extratemporáneos</h2>
+				<div class="table-responsive">
+					<table class="table table-hover" id= "table">
+						<thead>
+							<tr>
+								<th>Clave</th>
+								<th>Materia</th>
+								<th>Periodo</th>
+								<th>Examen</th>
+								<th>Fecha</th>
+								<th>Nueva Fecha</th>
+								<th>Motivo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>XXXX-1</td>
+								<td>Materia 1</td>
+								<td>AD2014</td>
+								<td>Primer Parcial</td>
+								<td>15-SEP-2014</td>
+								<td>17-SEP-2014</td>
+								<td>Urgencia Médica</td>
+							</tr>
+
+							<tr>
+								<td>XXXX-2</td>
+								<td>Materia 2</td>
+								<td>AD2013</td>
+								<td>Final</td>
+								<td>1-DIC-2013</td>
+								<td>2-DIC-2013</td>
+								<td>Urgencia Médica</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+				<div  id="form">
+					<div class="panel panel-default">
+						<div class="panel-body">
+
+							<form>
+
+								
+								Clave
+								<input type="text" id="clave"  size="6">
+
+
+								Materia
+								<input type="text" id="materia">
+								Periodo 
+								<input type="text" id="periodo" size="6">
+
+							</br></br>
+
+
+							<div class="field">
+								Examen
+								<input type="text" id="examen">
+								Fecha
+								<input type="text" id="fecha" size="11">
+								Nueva Fecha
+								<input type="text" id="nfecha" size="11">
+
+							</div>
+
+						</br>
+
+						<div class="field">
+							Motivo
+							<textarea id="motivo"></textarea>
+							
+
+						</div>
+
+
+					</div>
+					<div class="panel-footer">  <button type="button" class="btn btn-default btn-lg" id="add" onclick="agregarExamen()">Agregar</button> 
+					</form>
+				</div>
+
+				<script type="text/javascript">
+				function agregarExamen(){
+					var mat=document.getElementById("materia").value;
+					var tr = document.createElement("tr");
+					var td = document.createElement("td");
+					var t = document.createTextNode(document.getElementById("clave").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("materia").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("periodo").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("examen").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("fecha").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("nfecha").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					td = document.createElement("td");
+					t = document.createTextNode(document.getElementById("motivo").value);
+					td.appendChild(t);
+					tr.appendChild(td);
+					document.getElementsByTagName("tbody")[0].appendChild(tr);
+
+					
+				}
+
+				</script>
+
+
+<!--
+
+
+					<h3>Otro title</h3>
+
+					<form class="max500">
+					  <div class="form-group">
+					    <label for="exampleInputEmail1">Email address</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					  </div>
+					  <div class="form-group">
+					    <label for="exampleInputFile">File input</label>
+					    <input type="file" id="exampleInputFile">
+					    <p class="help-block">Example block-level help text here.</p>
+					  </div>
+					  <div class="checkbox">
+					    <label>
+					      <input type="checkbox"> Check me out
+					    </label>
+					  </div>
+					  <button type="submit" class="btn btn-default">Submit</button>
+					</form>-->
+				</div>
+
+			</div>
+		</div>
+
+
+		<div id="push"></div>
+
+	</div>
+
+	<footer>
+		<p class="text-center">ITESM</p>
+	</footer>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+		var footer = document.getElementsByTagName("footer")[0];
+		var footerHeight = footer.offsetHeight;
+		footer.style.margin = "-"+footerHeight+"px 0 0";
+		document.getElementById("wrap").style.margin = "0 0 -"+footerHeight+"px";
+		document.getElementById("push").style.height = footerHeight+"px";
+	}
+	</script>
+</body>
+</html>
