@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="my-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li{% if navactive == 'academico' %} class="active"{% endif %}>
+                    <a href="{{ path() }}">Académico</a>
+                </li>
+                <li{% if navactive == 'ss' %} class="active"{% endif %}>
+                    <a href="{{ path() }}">Servicio Social</a>
+                </li>
+                <li{% if navactive == 'extra' %} class="active"{% endif %}>
+                    <a href="{{ path() }}">Actividades Extracurriculares</a>
+                </li>
+                <li{% if navactive == 'pi' %} class="active"{% endif %}>
+                    <a href="{{ path() }}">Programas Internacionales</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

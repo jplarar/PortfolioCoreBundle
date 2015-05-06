@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Historia Académica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/portfoliocore/css/mystyles.css') }}" >
+</head>
+<body>
+
+<div id="wrap">
+
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1><a href="{{ path('marek_control_dashboard') }}">Portafolio de Alumnos</a></h1>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a href="{{ path('logout') }}">Cerrar sesión</a>
+                    <p>{{ user.username }}</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block navbar %}
+        {% include 'PortfolioCoreBundle:Common:navbar.html.twig' %}
+    {% endblock %}
+
+    <div class="container-fluid">
+        <div class="row">
+            {% block sidebar %}
+            {% endblock %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <div id="push">
+    </div>
+</div>
+
+<footer>
+    <p class="text-center">ITESM</p>
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    window.onload = function(){
+        var footer = document.getElementsByTagName("footer")[0];
+        var footerHeight = footer.offsetHeight;
+        footer.style.margin = "-"+footerHeight+"px 0 0";
+        document.getElementById("wrap").style.margin = "0 0 -"+footerHeight+"px";
+        document.getElementById("push").style.height = footerHeight+"px";
+    }
+</script>
+</body>
+</html>

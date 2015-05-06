@@ -150,7 +150,7 @@
         }
     </style>
 
-    <script src="../../../../../Portafolio-Alumnos/views/js/prefixfree.min.js"></script>
+    <script src="{{ asset('bundles/portfoliocore/js/prefixfree.min.js') }}"></script>
 
 </head>
 
@@ -162,10 +162,13 @@
 </div>
 <br>
 <div class="login">
-    <form action="../../../../../Portafolio-Alumnos/views/busqueda.html">
-        <input type="text" placeholder="Nómina (Ejemplo: L00123456)" name="user"><br>
-        <input type="password" placeholder="password" name="password"><br>
+    <form action="{{ path('login_check') }}">
+        <input type="text" placeholder="Nómina (Ejemplo: L00123456)" name="_username"><br>
+        <input type="password" placeholder="password" name="_password"><br>
         <input type="submit" value="Login">
+        {% if error %}
+            <span class="label label-danger">Error</span> {{ error.message }}
+        {% endif %}
     </form>
 </div>
 
