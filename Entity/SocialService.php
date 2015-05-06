@@ -76,5 +76,174 @@ class SocialService {
     #########################
 
     // none.
+    /**
+     * Get socialServiceId
+     *
+     * @return integer
+     */
+    public function getSocialServiceId()
+    {
+        return $this->socialServiceId;
+    }
 
+    /**
+     * Set period
+     *
+     * @param string $period
+     * @return SocialService
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @return string
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
+
+    /**
+     * Set campus
+     *
+     * @param string $campus
+     * @return SocialService
+     */
+    public function setCampus($campus)
+    {
+        $this->campus = $campus;
+
+        return $this;
+    }
+
+    /**
+     * Get campus
+     *
+     * @return string
+     */
+    public function getCampus()
+    {
+        return $this->campus;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return SocialService
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set company
+     *
+     * @param string $company
+     * @return SocialService
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return string
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * Set registeredHours
+     *
+     * @param integer $registeredHours
+     * @return SocialService
+     */
+    public function setRegisteredHours($registeredHours)
+    {
+        $this->registeredHours = $registeredHours;
+
+        return $this;
+    }
+
+    /**
+     * Get registeredHours
+     *
+     * @return integer
+     */
+    public function getRegisteredHours()
+    {
+        return $this->registeredHours;
+    }
+
+    /**
+     * Set accreditedHours
+     *
+     * @param integer $accreditedHours
+     * @return SocialService
+     */
+    public function setAccreditedHours($accreditedHours)
+    {
+        $this->accreditedHours = $accreditedHours;
+
+        return $this;
+    }
+
+    /**
+     * Get accreditedHours
+     *
+     * @return integer
+     */
+    public function getAccreditedHours()
+    {
+        return $this->accreditedHours;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return SocialService
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

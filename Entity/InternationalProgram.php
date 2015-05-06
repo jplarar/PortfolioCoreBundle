@@ -66,5 +66,129 @@ class InternationalProgram {
     #########################
 
     // none.
+    /**
+     * Get internationalProgramId
+     *
+     * @return integer
+     */
+    public function getInternationalProgramId()
+    {
+        return $this->internationalProgramId;
+    }
+
+    /**
+     * Set university
+     *
+     * @param string $university
+     * @return InternationalProgram
+     */
+    public function setUniversity($university)
+    {
+        $this->university = $university;
+
+        return $this;
+    }
+
+    /**
+     * Get university
+     *
+     * @return string
+     */
+    public function getUniversity()
+    {
+        return $this->university;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return InternationalProgram
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return InternationalProgram
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set period
+     *
+     * @param string $period
+     * @return InternationalProgram
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @return string
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return InternationalProgram
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
 }

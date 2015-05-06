@@ -51,5 +51,60 @@ class Toefl {
     #########################
 
     // none.
+    /**
+     * Get toeflId
+     *
+     * @return integer
+     */
+    public function getToeflId()
+    {
+        return $this->toeflId;
+    }
+
+    /**
+     * Set score
+     *
+     * @param decimal $score
+     * @return Toefl
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return decimal
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set date
+     *
+     * @param /DateTime $date
+     * @return Toefl
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return /DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 
 }

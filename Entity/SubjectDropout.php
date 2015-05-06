@@ -51,5 +51,60 @@ class SubjectDropout {
     #########################
 
     // none.
+    
+    /**
+     * Get subjectDropoutId
+     *
+     * @return integer
+     */
+    public function getSubjectDropoutId()
+    {
+        return $this->subjectDropoutId;
+    }
 
+    /**
+     * Set motive
+     *
+     * @param string $motive
+     * @return SubjectDropout
+     */
+    public function setMotive($motive)
+    {
+        $this->motive = $motive;
+
+        return $this;
+    }
+
+    /**
+     * Get motive
+     *
+     * @return string
+     */
+    public function getMotive()
+    {
+        return $this->motive;
+    }
+
+    /**
+     * Set period
+     *
+     * @param string $period
+     * @return SubjectDropout
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @return string
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
 }

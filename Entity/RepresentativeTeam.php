@@ -51,5 +51,60 @@ class RepresentativeTeam {
     #########################
 
     // none.
+    /**
+     * Get representativeTeamId
+     *
+     * @return integer
+     */
+    public function getRepresentativeTeamId()
+    {
+        return $this->representativeTeamId;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param string $sport
+     * @return RepresentativeTeam
+     */
+    public function setSport($sport)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return string
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * Set period
+     *
+     * @param string $period
+     * @return RepresentativeTeam
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @return string
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
 
 }
