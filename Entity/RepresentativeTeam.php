@@ -1,7 +1,55 @@
 <?php
+
+namespace Portfolio\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
- * Created by PhpStorm.
- * User: NivaDev15
- * Date: 5/2/15
- * Time: 1:53 PM
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Table(name="RepresentativeTeams")
  */
+class RepresentativeTeam {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", unique=TRUE)
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $representativeTeamId;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $sport;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $period;
+
+    #########################
+    ## OBJECT RELATIONSHIP ##
+    #########################
+
+    // none.
+
+    #########################
+    ##      CONSTRUCTOR    ##
+    #########################
+
+    // none.
+
+    #########################
+    ##   SPECIAL METHODS   ##
+    #########################
+
+    // none.
+
+    #########################
+    ## GETTERs AND SETTERs ##
+    #########################
+
+    // none.
+
+}
