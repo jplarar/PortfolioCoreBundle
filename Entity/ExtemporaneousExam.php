@@ -47,7 +47,11 @@ class ExtemporaneousExam {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="extemporaneousExams")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -65,6 +69,23 @@ class ExtemporaneousExam {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
 
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return ExtemporaneousExam
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
+    }
 }

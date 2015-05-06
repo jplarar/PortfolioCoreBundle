@@ -37,7 +37,11 @@ class StudentGroup {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="studentGroups")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -55,6 +59,15 @@ class StudentGroup {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return StudentGroup
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
+    }
 
 }
