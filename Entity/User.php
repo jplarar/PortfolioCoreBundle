@@ -72,10 +72,9 @@ class User implements UserInterface, \Serializable
     #########################
 
 
-    #########################
-    # USER_INTERFACE METHODS
-    # Implemented from abstract class UserInterface
-    #########################
+    ##########################
+    # USER_INTERFACE METHODS #
+    ##########################
 
     /**
      * @inheritDoc

@@ -1,0 +1,15 @@
+## Security
+login:
+    pattern:    /login
+    defaults:   { _controller: PortfolioCoreBundle:Security:login }
+
+login_check:
+    pattern:    /login/check
+
+logout:
+    pattern:    /logout
+
+## Dashboard
+marek_control_dashboard:
+    pattern:    /
+    defaults:   { _controller: PortfolioCoreBundle:Dashboard:dashboard }
