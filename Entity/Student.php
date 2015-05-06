@@ -115,7 +115,7 @@ class Student {
     protected $internationalPrograms;
 
     /**
-     * @ORM\OneToMany(targetEntity="CulturalDiffusions", mappedBy="studentId")
+     * @ORM\OneToMany(targetEntity="CulturalDiffusion", mappedBy="studentId")
      */
     protected $culturalDiffusions;
 

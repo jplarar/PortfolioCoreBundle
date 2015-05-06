@@ -93,7 +93,7 @@ class Course {
     /**
      * Set name
      *
-     * @param string $units
+     * @param string $name
      * @return Course
      */
     public function setName($name)
