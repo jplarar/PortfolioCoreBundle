@@ -263,18 +263,6 @@ class Student {
         $this->admissionDate = $admissionDate;
 
     /**
-     * Add toefl
-     *
-     * @param Toefl $toefl
-     * @return Student
-     */
-    public function addToefl(Toefl $toefl)
-    {
-        $this->toefls[] = $toefl;
-        return $this;
-    }
-
-    /**
      * Get admissionDate
      *
      * @return /DateTime
@@ -327,28 +315,6 @@ class Student {
     }
 
     /**
-     * Get toefls
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getToefls()
-    {
-        return $this->toefls;
-    }
-
-    /**
-     * Add SubjectDropout
-     *
-     * @param SubjectDropout $subjectDropout
-     * @return Student
-     */
-    public function addSubjectDropout(SubjectDropout $subjectDropout)
-    {
-        $this->subjectDropouts[] = $subjectDropout;
-        return $this;
-    }
-
-    /**
      * Get gpa
      *
      * @return string
@@ -379,8 +345,21 @@ class Student {
     public function getUnits()
     {
         return $this->units;
+    }
 
-     * Remove SubjectDropout
+    /**
+     * Add SubjectDropout
+     *
+     * @param SubjectDropout $subjectDropout
+     * @return Student
+     */
+    public function addSubjectDropout(SubjectDropout $subjectDropout)
+    {
+        $this->subjectDropouts[] = $subjectDropout;
+        return $this;
+    }
+
+    /** Remove SubjectDropout
      *
      * @param SubjectDropout $subjectDropout
      */
@@ -399,4 +378,25 @@ class Student {
         return $this->subjectDropouts;
     }
 
+   /**
+     * Add toefl
+     *
+     * @param Toefl $toefl
+     * @return Student
+     */
+    public function addToefl(Toefl $toefl)
+    {
+        $this->toefls[] = $toefl;
+        return $this;
+    }
+
+    /**
+     * Get toefls
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getToefls()
+    {
+        return $this->toefls;
+    }
 }
