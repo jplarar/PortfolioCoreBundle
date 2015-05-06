@@ -52,4 +52,62 @@ class ChangeGrade {
 
     // none.
 
+    /**
+     * Get changeGradeId
+     *
+     * @return integer
+     */
+    public function getChangeGradeId()
+    {
+        return $this->changeGradeId;
+    }
+
+    
+    /**
+     * Set motive
+     *
+     * @param string $motive
+     * @return ChangeGrade
+     */
+    public function setMotive($motive)
+    {
+        $this->motive = $motive;
+
+        return $this;
+    }
+
+    /**
+     * Get motive
+     *
+     * @return string
+     */
+    public function getMotive()
+    {
+        return $this->motive;
+    }
+
+    
+    /**
+     * Set period
+     *
+     * @param integer $period
+     * @return ChangeGrade
+     */
+    public function setPeriod($period)
+    {
+        $this->period = $period;
+
+        return $this;
+    }
+
+    /**
+     * Get period
+     *
+     * @return integer
+     */
+    public function getPeriod()
+    {
+        return $this->period;
+    }
+
 }

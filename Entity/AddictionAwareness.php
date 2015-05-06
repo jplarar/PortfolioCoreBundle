@@ -55,6 +55,84 @@ class AddictionAwareness {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
+    /**
+     * Get addictionAwarenessId
+     *
+     * @return integer
+     */
+    public function getAddictionAwarenessId()
+    {
+        return $this->addictionAwarenessId;
+    }
+
+    /**
+     * Set method
+     *
+     * @param string $method
+     * @return AddictionAwareness
+     */
+    public function setMethod($method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
+
+    /**
+     * Get method
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    
+    /**
+     * Set date
+     *
+     * @param /DateTime $date
+     * @return AddictionAwareness
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return /DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set result
+     *
+     * @param string $result
+     * @return AddictionAwareness
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return string
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
 
 }

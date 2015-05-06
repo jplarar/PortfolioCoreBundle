@@ -56,5 +56,83 @@ class Course {
     #########################
 
     // none.
+    /**
+     * Get courseId
+     *
+     * @return integer
+     */
+    public function getCourseId()
+    {
+        return $this->courseId;
+    }
 
+    
+    /**
+     * Set units
+     *
+     * @param integer $units
+     * @return Course
+     */
+    public function setUnits($units)
+    {
+        $this->units = $units;
+
+        return $this;
+    }
+
+    /**
+     * Get units
+     *
+     * @return integer
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $units
+     * @return Course
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return Course
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
 }
