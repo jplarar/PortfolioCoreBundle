@@ -57,7 +57,11 @@ class SocialService {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="socialServices")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -75,7 +79,6 @@ class SocialService {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
     /**
      * Get socialServiceId
      *
@@ -165,6 +168,23 @@ class SocialService {
     {
         $this->company = $company;
 
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return SocialService
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
         return $this;
     }
 

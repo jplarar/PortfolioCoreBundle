@@ -32,7 +32,11 @@ class RepresentativeTeam {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="representativeTeams")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -50,7 +54,6 @@ class RepresentativeTeam {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
     /**
      * Get representativeTeamId
      *
@@ -105,6 +108,26 @@ class RepresentativeTeam {
     public function getPeriod()
     {
         return $this->period;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return RepresentativeTeam
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 
 }

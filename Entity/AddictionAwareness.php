@@ -37,7 +37,11 @@ class AddictionAwareness {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="addictionsAwareness")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -133,6 +137,26 @@ class AddictionAwareness {
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return AddictionAwareness
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 
 }

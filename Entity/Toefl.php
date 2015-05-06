@@ -32,7 +32,11 @@ class Toefl {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="toefls")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -50,7 +54,6 @@ class Toefl {
     ## GETTERs AND SETTERs ##
     #########################
 
-    // none.
     /**
      * Get toeflId
      *
@@ -105,6 +108,26 @@ class Toefl {
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return Toefl
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 
 }

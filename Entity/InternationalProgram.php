@@ -47,7 +47,11 @@ class InternationalProgram {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="internationalPrograms")
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     */
+    protected $studentId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -189,6 +193,26 @@ class InternationalProgram {
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Get StudentId
+     * @return Student
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set StudentId
+     * @param Student $studentId
+     * @return InternationalProgram
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
     }
 
 }
