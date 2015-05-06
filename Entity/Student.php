@@ -39,7 +39,7 @@ class Student {
     protected $foreignAddress;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $telephone;
 
@@ -158,18 +158,206 @@ class Student {
     #########################
 
     /**
-     * Add toefl
+     * Get studentId
      *
-     * @param Toefl $toefl
+     * @return integer
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
+    /**
+     * Set fullName
+     *
+     * @param string $fullName
      * @return Student
      */
-    public function addToefl(Toefl $toefl)
+    public function setFullName($fullName)
     {
-        $this->toefls[] = $toefl;
+        $this->fullName = $fullName;
+
         return $this;
     }
 
     /**
+     * Get fullName
+     *
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->fullName;
+    }
+
+    /**
+     * Set semester
+     *
+     * @param integer $semester
+     * @return Student
+     */
+    public function setSemester($semester)
+    {
+        $this->semester = $semester;
+
+        return $this;
+    }
+
+    /**
+     * Get semester
+     *
+     * @return integer
+     */
+    public function getSemester()
+    {
+        return $this->semester;
+    }
+
+    /**
+     * Set localAddress
+     *
+     * @param string $localAddress
+     * @return Student
+     */
+    public function setLocalAddress($localAddress)
+    {
+        $this->localAddress = $localAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get localAddress
+     *
+     * @return string
+     */
+    public function getLocalAddress()
+    {
+        return $this->localAddress;
+    }
+
+    /**
+     * Set foreignAddress
+     *
+     * @param string $foreignAddress
+     * @return Student
+     */
+    public function setForeignAddress($foreignAddress)
+    {
+        $this->foreignAddress = $foreignAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get foreignAddress
+     *
+     * @return string
+     */
+    public function getForeignAddress()
+    {
+        return $this->foreignAddress;
+    }
+
+    /**
+     * Set telephone
+     *
+     * @param string $telephone
+     * @return Student
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * Get telephone
+     *
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set career
+     *
+     * @param string $career
+     * @return Student
+     */
+    public function setCareer($career)
+    {
+        $this->career = $career;
+
+        return $this;
+    }
+
+    /**
+     * Get career
+     *
+     * @return string
+     */
+    public function getCareer()
+    {
+        return $this->career;
+    }
+
+    /**
+     * Set admissionDate
+     *
+     * @param /DateTime $admissionDate
+     * @return Student
+     */
+    public function setAdmissionDate($admissionDate)
+    {
+        $this->admissionDate = $admissionDate;
+
+    /**
+     * Get admissionDate
+     *
+     * @return /DateTime
+     */
+    public function getAdmissionDate()
+    {
+        return $this->admissionDate;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Student
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set gpa
+     *
+     * @param string $gpa
+     * @return Student
+     */
+    public function setGpa($gpa)
+    {
+        $this->gpa = $gpa;
+
      * Remove toefl
      *
      * @param Toefl $toefl
@@ -180,13 +368,36 @@ class Student {
     }
 
     /**
-     * Get toefls
+     * Get gpa
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return string
      */
-    public function getToefls()
+    public function getGpa()
     {
-        return $this->toefls;
+        return $this->gpa;
+    }
+
+    /**
+     * Set units
+     *
+     * @param integer $units
+     * @return Student
+     */
+    public function setUnits($units)
+    {
+        $this->units = $units;
+
+        return $this;
+    }
+
+    /**
+     * Get units
+     *
+     * @return integer
+     */
+    public function getUnits()
+    {
+        return $this->units;
     }
 
     /**
@@ -201,8 +412,7 @@ class Student {
         return $this;
     }
 
-    /**
-     * Remove SubjectDropout
+    /** Remove SubjectDropout
      *
      * @param SubjectDropout $subjectDropout
      */
@@ -231,6 +441,16 @@ class Student {
     public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
     {
         $this->extemporaneousExams[] = $extemporaneousExam;
+
+   /**
+     * Add toefl
+     *
+     * @param Toefl $toefl
+     * @return Student
+     */
+    public function addToefl(Toefl $toefl)
+    {
+        $this->toefls[] = $toefl;
         return $this;
     }
 
@@ -508,6 +728,15 @@ class Student {
     public function getAddictionAwarenesss()
     {
         return $this->addictionAwarenesss;
+    }
+
+     * Get toefls
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getToefls()
+    {
+        return $this->toefls;
     }
 
 }
