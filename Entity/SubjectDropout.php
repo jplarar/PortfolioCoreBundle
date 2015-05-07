@@ -138,7 +138,7 @@ class SubjectDropout {
     }
 
     /**
-     * Get CourseId
+     * Get CourseCode
      * @return string
      */
     public function getCourseCode()
@@ -148,7 +148,7 @@ class SubjectDropout {
 
     /**
      * Set CourseCode
-     * @param Course $courseCode
+     * @param string $courseCode
      * @return SubjectDropout
      */
     public function setCourseCode($courseCode)

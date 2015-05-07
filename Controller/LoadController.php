@@ -2,7 +2,9 @@
 
 namespace Portfolio\CoreBundle\Controller;
 
+use Portfolio\CoreBundle\Entity\CourseLog;
 use Portfolio\CoreBundle\Entity\Student;
+use Portfolio\CoreBundle\Entity\SubjectDropout;
 use Portfolio\CoreBundle\Entity\Toefl;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -74,6 +76,42 @@ class LoadController extends Controller
                 $toefl->setStudentId($student);
 
                 $em->persist($toefl);
+                $em->flush();
+            }
+
+            // Crawl SubjectDropouts
+            $dropouts = $rawStudent->getElementsByTagName('SubjectDropout');
+
+            /** @var \DOMElement $rawDropout */
+            foreach($dropouts as $rawDropout)
+            {
+                $dropout = new SubjectDropout();
+
+                $dropout->setMotive($rawDropout->getElementsByTagName('motive')->item(0)->nodeValue);
+                $dropout->setPeriod($rawDropout->getElementsByTagName('period')->item(0)->nodeValue);
+                $dropout->setCourseName($rawDropout->getElementsByTagName('courseName')->item(0)->nodeValue);
+                $dropout->setCourseCode($rawDropout->getElementsByTagName('courseCode')->item(0)->nodeValue);
+                $dropout->setStudentId($student);
+
+                $em->persist($dropout);
+                $em->flush();
+            }
+
+            // Crawl CourseLogs
+            $courselogs = $rawStudent->getElementsByTagName('CourseLog');
+
+            /** @var \DOMElement $rawCourseLog */
+            foreach($courselogs as $rawCourseLog)
+            {
+                $courseLog = new CourseLog();
+                $courseLog->setPeriod($rawCourseLog->getElementsByTagName('period')->item(0)->nodeValue);
+                $courseLog->setFinalGrade($rawCourseLog->getElementsByTagName('finalGrade')->item(0)->nodeValue);
+                $courseLog->setFirstGrade($rawCourseLog->getElementsByTagName('firstGrade')->item(0)->nodeValue);
+                $courseLog->setSecondGrade($rawCourseLog->getElementsByTagName('secondGrade')->item(0)->nodeValue);
+                $courseLog->setCourseCode($rawCourseLog->getElementsByTagName('courseCode')->item(0)->nodeValue);
+                $courseLog->setCourseName($rawCourseLog->getElementsByTagName('courseName')->item(0)->nodeValue);
+
+                $em->persist($courseLog);
                 $em->flush();
             }
 

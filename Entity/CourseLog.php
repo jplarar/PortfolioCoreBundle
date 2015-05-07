@@ -229,7 +229,7 @@ class CourseLog {
     }
 
     /**
-     * Get CourseId
+     * Get CourseCode
      * @return string
      */
     public function getCourseCode()
@@ -239,7 +239,7 @@ class CourseLog {
 
     /**
      * Set CourseCode
-     * @param Course $courseCode
+     * @param string $courseCode
      * @return CourseLog
      */
     public function setCourseCode($courseCode)
