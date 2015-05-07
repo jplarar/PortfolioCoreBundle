@@ -29,13 +29,16 @@ class AcademicController extends Controller
     public function scoreAction($id)
     {
         /* @var \Doctrine\ORM\EntityRepository $repository */
-        $repository = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\CourseLog');
-        $courseLogs = $repository->findBy(array(
-            'studentId' => $id
-        ));
+        $repository = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student');
+
+        /** @var \Portfolio\CoreBundle\Entity\Student $student */
+        $student = $repository->find($id);
+
+        $courseLogs = $student->getCourseLog();
 
         return $this->render('PortfolioCoreBundle:Academic:score.html.twig', array(
             'id' => $id,
+            'student' => $student,
             'courseLogs' => $courseLogs
         ));
     }
@@ -112,8 +115,8 @@ ENDSQL;
             // get extemporaneous parameters
             $period = $request->request->get('period');
             $exam = $request->request->get('exam');
-            $originalDate = $request->request->get('originalDate');
-            $newDate = $request->request->get('newDate');
+            $originalDate = new \DateTime($request->request->get('originalDate'));
+            $newDate = new \DateTime($request->request->get('newDate'));
             $motive = $request->request->get('motive');
             $courseCode = $request->request->get('courseCode');
             $courseName = $request->request->get('courseName');

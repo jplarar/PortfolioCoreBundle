@@ -138,10 +138,10 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Set originalDate
      *
-     * @param /DateTime $originalDate
+     * @param \DateTime$originalDate
      * @return ExtemporaneousExam
      */
-    public function setOriginalDate($originalDate)
+    public function setOriginalDate(\DateTime $originalDate)
     {
         $this->originalDate = $originalDate;
 
@@ -151,7 +151,7 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Get originalDate
      *
-     * @return /DateTime
+     * @return \DateTime
      */
     public function getOriginalDate()
     {
@@ -161,10 +161,10 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Set newDate
      *
-     * @param /DateTime $newDate
+     * @param \DateTime $newDate
      * @return ExtemporaneousExam
      */
-    public function setNewDate($newDate)
+    public function setNewDate(\DateTime $newDate)
     {
         $this->newDate = $newDate;
 
@@ -174,7 +174,7 @@ use Doctrine\ORM\Mapping as ORM;
     /**
      * Get newDate
      *
-     * @return /DateTime
+     * @return \DateTime
      */
     public function getNewDate()
     {

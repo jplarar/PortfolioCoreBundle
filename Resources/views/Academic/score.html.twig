@@ -1,0 +1,55 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'calificaciones' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Desglose de calificaciones</h2>
+
+    {% for i in 1..student.semester %}
+            <div class="table-responsive">
+                <table class="table table-condensed" style="border-collapse:collapse;">
+                    <tbody>
+
+                    <tr>
+                        <th data-toggle="collapse" data-target="#semestre{{ i }}" class="accordion-toggle" aria-expanded="true">Semestre {{ i }}</th>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="hiddenRow"><div id="semestre{{ i }}" class="accordian-body collapse in" aria-expanded="true">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Clave</th>
+                                        <th>Materia</th>
+                                        <th>1P</th>
+                                        <th>2P</th>
+                                        <th>Final</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for courseLog in courseLogs %}
+                                        {% if courseLog.semester == i %}
+                                        <tr>
+                                            <td>{{ courseLog.courseCode }}</td>
+                                            <td>{{ courseLog.courseName }}</td>
+                                            <td>{{ courseLog.firstGrade }}</td>
+                                            <td>{{ courseLog.secondGrade }}</td>
+                                            <td>{{ courseLog.finalGrade }}</td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

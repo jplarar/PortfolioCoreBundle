@@ -1,0 +1,94 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'examenes' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Exámenes Extemporáneos</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Materia</th>
+                        <th>Periodo</th>
+                        <th>Examen</th>
+                        <th>Fecha original</th>
+                        <th>Fecha nueva</th>
+                        <th>Motivo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for extemporaneo in extemporaneous %}
+                        <tr>
+                            <td>{{ extemporaneo.courseCode }}</td>
+                            <td>{{ extemporaneo.courseName }}</td>
+                            <td>{{ extemporaneo.period }}</td>
+                            <td>{{ extemporaneo.exam }}</td>
+                            <td>{{ extemporaneo.originalDate|date('Y-m-d') }}</td>
+                            <td>{{ extemporaneo.newDate|date('Y-m-d') }}</td>
+                            <td>{{ extemporaneo.motive }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel panel-default">
+                <form action="{{ path('portfolio_control_academic_extemporaneous', {'id' : id}) }}" method="post">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Codigo de la materia:</label>
+                            <input type="text" class="form-control" placeholder="TC-1010" name="courseCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de la materia:</label>
+                            <input type="text" class="form-control" placeholder="Matemáticas" name="courseName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Perodo:</label>
+                            <select class="form-control" id="sel1" name="period" required>
+                                {% for i in 2010..2030 %}
+                                    <option value="EM{{ i }}">EM{{ i }}</option>
+                                    <option value="V{{ i }}">V{{ i }}</option>
+                                    <option value="AD{{ i }}">AD{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Examen:</label>
+                            <select class="form-control" id="sel1" name="exam" required>
+                                <option value="1er Parcial">1er Parcial</option>
+                                <option value="2do PArcial">2do Parcial</option>
+                                <option value="Final">Final</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Motivo:</label>
+                            <input type="text" class="form-control" name="motive" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha original:</label>
+                            <input type="text" class="datepicker" data-date-format="mm/dd/yyyy" name="originalDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha nueva:</label>
+                            <input type="text" class="datepicker" data-date-format="mm/dd/yyyy" name="newDate" required>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        {% if error != null %}
+                            <div class="alert alert-info">
+                                <p>{{ error }}</p>
+                            </div>
+                        {% endif %}
+                        <button class="btn btn-default" type="submit">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

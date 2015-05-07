@@ -1,0 +1,36 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'bajas' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Materias dadas de Baja</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Materia</th>
+                        <th>Periodo</th>
+                        <th>Motivo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for subjectDropout in subjectDropouts %}
+                        <tr>
+                            <td>{{ subjectDropout.courseCode }}</td>
+                            <td>{{ subjectDropout.courseName }}</td>
+                            <td>{{ subjectDropout.period }}</td>
+                            <td>{{ subjectDropout.motive }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

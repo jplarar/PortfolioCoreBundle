@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Historia Académica</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="{{ asset('bundles/portfoliocore/css/mystyles.css') }}" >
 </head>
 <body>
@@ -45,6 +46,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript">
     window.onload = function(){
         var footer = document.getElementsByTagName("footer")[0];
@@ -52,6 +54,7 @@
         footer.style.margin = "-"+footerHeight+"px 0 0";
         document.getElementById("wrap").style.margin = "0 0 -"+footerHeight+"px";
         document.getElementById("push").style.height = footerHeight+"px";
+        $('.datepicker').datepicker()
     }
 </script>
 </body>

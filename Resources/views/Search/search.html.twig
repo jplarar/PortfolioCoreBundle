@@ -12,7 +12,9 @@
                 <p>Unicamente los numeros, ejemplo 123456</p>
                 <div class="row">
                     <form action="{{ path('portfolio_control_search') }}" method="post">
-                        <input type="text" class="form-control" placeholder="Matricula" name="id">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Matricula" name="id">
+                        </div>
                         {% if error != null %}
                             <div class="alert alert-info">
                                 <p>{{ error }}</p>
