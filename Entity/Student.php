@@ -85,11 +85,6 @@ class Student {
     protected $subjectDropouts;
 
     /**
-     * @ORM\OneToMany(targetEntity="ExtemporaneousExam", mappedBy="studentId")
-     */
-    protected $extemporaneousExams;
-
-    /**
      * @ORM\OneToMany(targetEntity="SocialService", mappedBy="studentId")
      */
     protected $socialServices;
@@ -142,7 +137,6 @@ class Student {
     {
         $this->toefls = new ArrayCollection();
         $this->subjectDropouts = new ArrayCollection();
-        $this->$extemporaneousExams = new ArrayCollection();
         $this->$socialServices = new ArrayCollection();
         $this->$sports = new ArrayCollection();
         $this->$studentGroups = new ArrayCollection();
@@ -433,39 +427,6 @@ class Student {
     public function getSubjectDropouts()
     {
         return $this->subjectDropouts;
-    }
-
-
-    /**
-     * Add ExtemporaneousExam
-     *
-     * @param ExtemporaneousExam $extemporaneousExam
-     * @return Student
-     */
-    public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
-    {
-        $this->extemporaneousExams[] = $extemporaneousExam;
-        return $this;
-    }
-
-    /**
-     * Remove ExtemporaneousExam
-     *
-     * @param ExtemporaneousExam $extemporaneousExam
-     */
-    public function removeExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
-    {
-        $this->extemporaneousExams->removeElement($extemporaneousExam);
-    }
-
-    /**
-     * Get ExtemporaneousExams
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExtemporaneousExams()
-    {
-        return $this->extemporaneousExams;
     }
 
     /**
