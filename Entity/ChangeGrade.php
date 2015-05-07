@@ -26,7 +26,7 @@ class ChangeGrade {
     protected $motive;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $period;
 

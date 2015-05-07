@@ -21,7 +21,7 @@ class CourseLog {
     protected $courseLogId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $period;
 
