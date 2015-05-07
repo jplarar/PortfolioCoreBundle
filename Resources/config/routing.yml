@@ -10,6 +10,6 @@ logout:
     pattern:    /logout
 
 ## Dashboard
-marek_control_dashboard:
+portfolio_control_dashboard:
     pattern:    /
     defaults:   { _controller: PortfolioCoreBundle:Dashboard:dashboard }

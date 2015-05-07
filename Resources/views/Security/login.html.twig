@@ -150,7 +150,8 @@
         }
     </style>
 
-    <script src="../../../../../Portafolio-Alumnos/views/js/prefixfree.min.js"></script>
+    <script src="{{ asset('bundles/portfoliocore/css/prefixfree.min.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 </head>
 
@@ -162,14 +163,14 @@
 </div>
 <br>
 <div class="login">
-    <form action="{{ path('login_check') }}">
+    <form action="{{ path('login_check') }}" method="post">
         <input type="text" id="username" placeholder="Nómina (Ejemplo: L00123456)" name="_username" autofocus><br>
         <input type="password" id="password" placeholder="password" name="_password"><br>
         <input type="submit"  value="Login">
-        {% if error %}
-            <span class="label label-danger">Error</span> {{ error.message }}
-        {% endif %}
     </form>
+    {% if error %}
+        <span class="label label-danger">Error</span> <p style="color: white">{{ error.message }}</p>
+    {% endif %}
 </div>
 
 <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
