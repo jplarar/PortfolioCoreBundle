@@ -22,8 +22,9 @@ class LoadController extends Controller
 {
     public function listAction()
     {
+        $error = null;
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => ""
+            'error' => $error
         ));
     }
 
@@ -213,7 +214,7 @@ class LoadController extends Controller
 
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa de Alumnos"
         ));
     }
 
@@ -256,7 +257,7 @@ class LoadController extends Controller
             }
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa de equipos representativos"
         ));
     }
 
@@ -301,7 +302,7 @@ class LoadController extends Controller
             }
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa de CAT"
         ));
     }
 
@@ -345,7 +346,7 @@ class LoadController extends Controller
             }
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa clubes deportivos"
         ));
     }
 
@@ -389,7 +390,7 @@ class LoadController extends Controller
             }
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa difusión cultural"
         ));
     }
 
@@ -436,7 +437,7 @@ class LoadController extends Controller
 
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa prigramas internacionales"
         ));
 
     }
@@ -485,7 +486,7 @@ class LoadController extends Controller
 
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa de servicio social"
         ));
 
     }
@@ -530,7 +531,7 @@ class LoadController extends Controller
 
         }
         return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
-            'error' => "Carga completa"
+            'error' => "Carga completa grupos estudiantiles"
         ));
 
     }
