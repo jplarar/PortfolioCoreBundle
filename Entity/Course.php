@@ -43,11 +43,6 @@ class Course {
     protected $subjectDropouts;
 
     /**
-     * @ORM\OneToMany(targetEntity="ExtemporaneousExam", mappedBy="courseId")
-     */
-    protected $extemporaneousExams;
-
-    /**
      * @ORM\OneToMany(targetEntity="ChangeGrade", mappedBy="courseId")
      */
     protected $changeGrades;
@@ -64,7 +59,6 @@ class Course {
     public function __construct()
     {
         $this->subjectDropouts = new ArrayCollection();
-        $this->$extemporaneousExams = new ArrayCollection();
         $this->$changeGrades = new ArrayCollection();
         $this->courseLogs = new ArrayCollection();
     }
@@ -190,39 +184,6 @@ class Course {
     public function getSubjectDropouts()
     {
         return $this->subjectDropouts;
-    }
-
-
-    /**
-     * Add ExtemporaneousExam
-     *
-     * @param ExtemporaneousExam $extemporaneousExam
-     * @return Course
-     */
-    public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
-    {
-        $this->extemporaneousExams[] = $extemporaneousExam;
-        return $this;
-    }
-
-    /**
-     * Remove ExtemporaneousExam
-     *
-     * @param ExtemporaneousExam $extemporaneousExam
-     */
-    public function removeExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
-    {
-        $this->extemporaneousExams->removeElement($extemporaneousExam);
-    }
-
-    /**
-     * Get ExtemporaneousExams
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExtemporaneousExams()
-    {
-        return $this->extemporaneousExams;
     }
 
     /**
