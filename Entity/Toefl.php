@@ -67,7 +67,7 @@ class Toefl {
     /**
      * Set score
      *
-     * @param decimal $score
+     * @param float $score
      * @return Toefl
      */
     public function setScore($score)
@@ -80,7 +80,7 @@ class Toefl {
     /**
      * Get score
      *
-     * @return decimal
+     * @return float
      */
     public function getScore()
     {

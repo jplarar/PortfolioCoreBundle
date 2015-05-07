@@ -3,6 +3,7 @@
 namespace Portfolio\CoreBundle\Controller;
 
 use Portfolio\CoreBundle\Entity\Student;
+use Portfolio\CoreBundle\Entity\Toefl;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -60,6 +61,22 @@ class LoadController extends Controller
 
             $em->persist($student);
             $em->flush();
+
+            // Crawl TOEFL
+            $toefls = $rawStudent->getElementsByTagName('Toefl');
+
+            /** @var \DOMElement $rawToefl */
+            foreach($toefls as $rawToefl)
+            {
+                $toefl = new Toefl();
+                $toefl->setDate(new \DateTime($rawToefl->getElementsByTagName('date')->item(0)->nodeValue));
+                $toefl->setScore(floatval($rawToefl->getElementsByTagName('score')->item(0)->nodeValue));
+                $toefl->setStudentId($student);
+
+                $em->persist($toefl);
+                $em->flush();
+            }
+
         }
 
     }
