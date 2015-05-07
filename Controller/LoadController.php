@@ -11,7 +11,20 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class LoadController extends Controller
 {
-    public function parseAction(Request $request)
+    public function listAction()
+    {
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig');
+    }
+
+    public function academicAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:academic.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function academicParseAction(Request $request)
     {
         /* @var UploadedFile $file */
         $file = $request->files->get('file');
@@ -22,7 +35,7 @@ class LoadController extends Controller
         }
         $document = new \DOMDocument();
         $document->loadXml(file_get_contents($file->getPathname()));
-
+        exit(\Doctrine\Common\Util\Debug::dump($document));
         /** @var \Symfony\Component\DomCrawler\Crawler  $crawler */
         $crawler = new Crawler();
         $crawler->addDocument($document);

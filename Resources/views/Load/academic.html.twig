@@ -1,0 +1,31 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="well">
+                <h1>Selecciona un archivo XML</h1>
+                <div class="row">
+                    <form action="{{ path('portfolio_control_load_academic_parse') }}" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label>Al realizar esta cerga se borraran todos los datos
+                                y sera necesario voler a cargar los demas departamentos</label>
+                                <input type="file" class="form-control" placeholder="TC-1010" name="file" required>
+                            </div>
+                            {% if error != null %}
+                                <div class="alert alert-info">
+                                    <p>{{ error }}</p>
+                                </div>
+                            {% endif %}
+                            <button class="btn btn-default" type="submit">Cargar Archivo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

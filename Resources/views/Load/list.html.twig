@@ -1,0 +1,58 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="well">
+                <h1>Selecciona el departamento del cual deseas cargar los datos</h1>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>Esta es la carga principal es necesario hacer esta carga de datos primero para poder realizar las demas.</p>
+                            <ul>
+                            <li>
+                                <a href="{{ path('portfolio_control_load_academic') }}" class="btn btn-primary">Cargar alumnos</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-xs-6">
+                        <p>Sercivio Social</p>
+                        <ul>
+                            <li>
+                                <a href="{{ path('portfolio_control_search') }}" class="btn btn-primary">SS</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                    <p>Acrividades Extracurriculares</p>
+                        <ul>
+                            <li><a href="" class="btn btn-primary"> Clubes deportivos </a></li>
+                            <li><a href="" class="btn btn-primary"> Equipos representativos </a></li>
+                            <li><a href="" class="btn btn-primary"> Difusion culrural </a></li>
+                            <li><a href="" class="btn btn-primary"> Grupos estudiantiles </a></li>
+                            <li><a href="" class="btn btn-primary"> CAT </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6">
+                        <p>Programas Internacionales</p>
+                        <ul>
+                            <li>
+                                <a href="" class="btn btn-primary"> PI </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

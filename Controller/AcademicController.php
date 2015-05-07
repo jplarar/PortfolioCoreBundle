@@ -123,6 +123,11 @@ ENDSQL;
 
             if (!$period || !$exam || !$originalDate || !$newDate || !$motive || !$courseCode || !$courseName) {
                 $error = "Por favor completa todos los campos";
+                return $this->render('PortfolioCoreBundle:Academic:extemporaneous.html.twig', array(
+                    'id' => $id,
+                    'extemporaneous' => $extemporaneous,
+                    'error' => $error
+                ));
             }
 
             $extemp = new ExtemporaneousExam();

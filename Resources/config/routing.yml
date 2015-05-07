@@ -74,3 +74,16 @@ portfolio_control_extracurricular_cat:
 portfolio_control_internationalprogram_list:
     pattern:    /internationalprogram/list/{id}
     defaults:   { _controller: PortfolioCoreBundle:InternationalProgram:list }
+
+## Load XML
+portfolio_control_load_list:
+    pattern:    /load/list
+    defaults:   { _controller: PortfolioCoreBundle:Load:list }
+
+portfolio_control_load_academic:
+    pattern:    /load/academic
+    defaults:   { _controller: PortfolioCoreBundle:Load:academic }
+
+portfolio_control_load_academic_parse:
+    pattern:    /load/academic/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:academicParse }
