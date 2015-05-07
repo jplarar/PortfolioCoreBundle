@@ -43,6 +43,11 @@ class InternationalProgram {
      */
     protected $status;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $code;
+
     #########################
     ## OBJECT RELATIONSHIP ##
     #########################
@@ -181,6 +186,29 @@ class InternationalProgram {
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     * @return InternationalProgram
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
 
         return $this;
     }
