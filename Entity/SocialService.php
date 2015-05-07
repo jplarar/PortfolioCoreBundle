@@ -59,7 +59,7 @@ class SocialService {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="socialServices")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 

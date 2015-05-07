@@ -39,7 +39,7 @@ class AddictionAwareness {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="addictionsAwareness")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 
