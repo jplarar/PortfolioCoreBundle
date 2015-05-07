@@ -21,7 +21,7 @@ class StudentGroup {
     /**
      * @ORM\Column(type="string")
      */
-    protected $group;
+    protected $association;
 
     /**
      * @ORM\Column(type="string")
@@ -70,26 +70,26 @@ class StudentGroup {
     }
 
     /**
-     * Set group
+     * Set association
      *
-     * @param string $group
+     * @param string $association
      * @return StudentGroup
      */
-    public function setGroup($group)
+    public function setAssociation($association)
     {
-        $this->group = $group;
+        $this->association = $association;
 
         return $this;
     }
 
     /**
-     * Get group
+     * Get association
      *
      * @return string
      */
-    public function getGroup()
+    public function getAssociation()
     {
-        return $this->group;
+        return $this->association;
     }
 
     /**

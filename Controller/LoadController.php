@@ -494,7 +494,7 @@ class LoadController extends Controller
         foreach($studentGroups as $rawTeam)
         {
             $studentGroup = new StudentGroup();
-            $studentGroup->setGroup($rawTeam->getElementsByTagName('group')->item(0)->nodeValue);
+            $studentGroup->setAssociation($rawTeam->getElementsByTagName('association')->item(0)->nodeValue);
             $studentGroup->setPosition($rawTeam->getElementsByTagName('position')->item(0)->nodeValue);
             $studentGroup->setPeriod($rawTeam->getElementsByTagName('period')->item(0)->nodeValue);
             // Look for student
