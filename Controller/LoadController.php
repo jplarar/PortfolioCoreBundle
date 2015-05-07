@@ -177,7 +177,7 @@ class LoadController extends Controller
         }
     }
 
-    public function sportsParseAction(Request $request)
+    public function teamsParseAction(Request $request)
     {
         /* @var UploadedFile $file */
         $file = $request->files->get('file');
@@ -252,8 +252,8 @@ class LoadController extends Controller
                 ->find($rawAddiction->getElementsByTagName('studentId')->item(0)->nodeValue);
 
             if ($student) {
-                $team->setStudentId($student);
-                $em->persist($team);
+                $addiction->setStudentId($student);
+                $em->persist($addiction);
                 $em->flush();
             }
         }
