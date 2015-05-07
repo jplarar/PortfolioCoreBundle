@@ -33,10 +33,19 @@ class LoadController extends Controller
         for ($i = 0; $i < $students->count(); $i++)
         {
             $rawStudent = $students->getNode($i);
-
-            $studentId = $rawStudent->getAttribute('id');
-
+            // Haz un print de rawStudent para ver si vas bien
             $student = new Student();
+            $student->setStudentId($rawStudent->getAttribute('id'));
+            // Si si, creo que asi los puedes ir llamando
+            $student->setFullName($rawStudent->getElementsByTagName('fullName')->item(0)->textContent);
+
+            // Te traes el siguiente arreglo y haces el mismo pedo
+            $rawToefls = $rawStudent->getElementsByTagName('Toefls')->item(0)->childNodes;
+            for ($t = 0; $t < $rawToefls->length; $t++) {
+                $rawToefl = $rawToefls->item($t)->childNodes;
+
+            }
+
         }
 
     }
