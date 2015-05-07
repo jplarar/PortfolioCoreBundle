@@ -3,7 +3,6 @@
 namespace Portfolio\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -43,21 +42,21 @@ use Doctrine\Common\Collections\ArrayCollection;
      */
     protected $motive;
 
-    #########################
-    ## OBJECT RELATIONSHIP ##
-    #########################
-
     /**
-     * @ORM\ManyToOne(targetEntity="Student", inversedBy="extemporaneousExams")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\Column(type="integer")
      */
     protected $studentId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Course", inversedBy="extemporaneousExams")
-     * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
+     * @ORM\Column(type="integer")
      */
-    protected $courseId;
+    protected $courseCode;
+
+    #########################
+    ## OBJECT RELATIONSHIP ##
+    #########################
+
+    // none.
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -202,7 +201,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
     /**
      * Get StudentId
-     * @return Student
+     * @return integer
      */
     public function getStudentId()
     {
@@ -225,19 +224,19 @@ use Doctrine\Common\Collections\ArrayCollection;
      * Get CourseId
      * @return Course
      */
-    public function getCourseId()
+    public function getCourseCode()
     {
-        return $this->courseId;
+        return $this->courseCode;
     }
 
     /**
-     * Set CourseId
-     * @param Course $courseId
+     * Set CourseCode
+     * @param Course $courseCode
      * @return ExtemporaneousExam
      */
-    public function setCourseId($courseId)
+    public function setCourseCode($courseCode)
     {
-        $this->courseId = $courseId;
+        $this->courseCode = $courseCode;
         return $this;
     }
 }

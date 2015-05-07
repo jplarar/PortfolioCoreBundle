@@ -10,20 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
- * @ORM\Table(name="ChangeGrades")
+ * @ORM\Table(name="CourseLogs")
  */
-class ChangeGrade {
+class CourseLog {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer", unique=TRUE)
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $changeGradeId;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $motive;
+    protected $courseLogId;
 
     /**
      * @ORM\Column(type="integer")
@@ -40,23 +35,18 @@ class ChangeGrade {
      */
     protected $grade;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $newGrade;
-
     #########################
     ## OBJECT RELATIONSHIP ##
     #########################
 
     /**
-     * @ORM\ManyToOne(targetEntity="Student", inversedBy="changeGrades")
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="courseLogs")
      * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
      */
     protected $studentId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Course", inversedBy="changeGrades")
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="courseLogs")
      * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
      */
     protected $courseId;
@@ -84,41 +74,16 @@ class ChangeGrade {
      *
      * @return integer
      */
-    public function getChangeGradeId()
+    public function getCourseLogId()
     {
         return $this->changeGradeId;
     }
-
-    
-    /**
-     * Set motive
-     *
-     * @param string $motive
-     * @return ChangeGrade
-     */
-    public function setMotive($motive)
-    {
-        $this->motive = $motive;
-
-        return $this;
-    }
-
-    /**
-     * Get motive
-     *
-     * @return string
-     */
-    public function getMotive()
-    {
-        return $this->motive;
-    }
-
 
     /**
      * Set period
      *
      * @param integer $period
-     * @return ChangeGrade
+     * @return CourseLog
      */
     public function setPeriod($period)
     {
@@ -141,7 +106,7 @@ class ChangeGrade {
      * Set semester
      *
      * @param integer $semester
-     * @return ChangeGrade
+     * @return CourseLog
      */
     public function setSemester($semester)
     {
@@ -164,7 +129,7 @@ class ChangeGrade {
      * Set grade
      *
      * @param integer $grade
-     * @return ChangeGrade
+     * @return CourseLog
      */
     public function setGrade($grade)
     {
@@ -184,29 +149,6 @@ class ChangeGrade {
     }
 
     /**
-     * Set newGrade
-     *
-     * @param integer $newGrade
-     * @return ChangeGrade
-     */
-    public function setNewGrade($newGrade)
-    {
-        $this->newGrade = $newGrade;
-
-        return $this;
-    }
-
-    /**
-     * Get newGrade
-     *
-     * @return integer
-     */
-    public function getNewGrade()
-    {
-        return $this->newGrade;
-    }
-
-    /**
      * Get StudentId
      * @return Student
      */
@@ -218,7 +160,7 @@ class ChangeGrade {
     /**
      * Set StudentId
      * @param Student $studentId
-     * @return ChangeGrade
+     * @return CourseLog
      */
     public function setStudentId($studentId)
     {
@@ -238,7 +180,7 @@ class ChangeGrade {
     /**
      * Set CourseId
      * @param Course $courseId
-     * @return ChangeGrade
+     * @return CourseLog
      */
     public function setCourseId($courseId)
     {

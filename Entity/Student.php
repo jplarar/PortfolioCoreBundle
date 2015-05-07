@@ -14,7 +14,6 @@ class Student {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer", unique=TRUE)
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $studentId;
 
@@ -61,7 +60,8 @@ class Student {
     /**
      * grade point average
      *
-     * @ORM\Column(type="string")
+     * Range: -999.99 to 999.99
+     * @ORM\Column(type="decimal", precision=5, scale=2)
      */
     protected $gpa;
 
@@ -125,6 +125,11 @@ class Student {
     protected $changeGrades;
 
     /**
+     * @ORM\OneToMany(targetEntity="CourseLog", mappedBy="studentId")
+     */
+    protected $courseLogs;
+
+    /**
      * @ORM\OneToMany(targetEntity="AddictionAwareness", mappedBy="studentId")
      */
     protected $addictionsAwareness;
@@ -145,6 +150,7 @@ class Student {
         $this->internationalPrograms = new ArrayCollection();
         $this->$culturalDiffusions = new ArrayCollection();
         $this->$changeGrades = new ArrayCollection();
+        $this->courseLogs = new ArrayCollection();
         $this->$addictionsAwareness = new ArrayCollection();
     }
 
@@ -684,6 +690,38 @@ class Student {
     public function getChangeGrades()
     {
         return $this->changeGrades;
+    }
+
+    /**
+     * Add courseLog
+     *
+     * @param CourseLog $courseLog
+     * @return Student
+     */
+    public function addCourseLog(CourseLog $courseLog)
+    {
+        $this->courseLogs[] = $courseLog;
+        return $this;
+    }
+
+    /**
+     * Remove courseLog
+     *
+     * @param CourseLog $courseLog
+     */
+    public function removeCourseLog(CourseLog $courseLog)
+    {
+        $this->courseLogs->removeElement($courseLog);
+    }
+
+    /**
+     * Get courseLogs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseLog()
+    {
+        return $this->courseLogs;
     }
 
     /**

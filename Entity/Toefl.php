@@ -19,7 +19,7 @@ class Toefl {
     protected $toeflId;
 
     /**
-     * @ORM\Column(type="decimal", precision=5, scale=2)
+     * @ORM\Column(type="integer")
      */
     protected $score;
 

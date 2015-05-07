@@ -13,6 +13,7 @@ html, body {
 /*------------------ HEADER --------------------*/
 header {
 	background-color: #333;
+    margin-bottom: 20px;
 }
 
 header h1 {
@@ -84,6 +85,10 @@ nav.navbar-default .navbar-nav>li>a:hover, nav.navbar-default .navbar-nav>li>a:f
 }
 
 /*---------------------- CONTENIDO -----------------------*/
+.well h1 {
+    margin-bottom: 25px;
+}
+
 .contenido {
 	padding-bottom: 40px;
 }

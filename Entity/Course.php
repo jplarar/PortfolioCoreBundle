@@ -52,6 +52,11 @@ class Course {
      */
     protected $changeGrades;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CourseLog", mappedBy="courseId")
+     */
+    protected $courseLogs;
+
     #########################
     ##      CONSTRUCTOR    ##
     #########################
@@ -61,6 +66,7 @@ class Course {
         $this->subjectDropouts = new ArrayCollection();
         $this->$extemporaneousExams = new ArrayCollection();
         $this->$changeGrades = new ArrayCollection();
+        $this->courseLogs = new ArrayCollection();
     }
 
     #########################
@@ -249,5 +255,37 @@ class Course {
     public function getChangeGrades()
     {
         return $this->changeGrades;
+    }
+
+    /**
+     * Add courseLog
+     *
+     * @param CourseLog $courseLog
+     * @return Course
+     */
+    public function addCourseLog(CourseLog $courseLog)
+    {
+        $this->courseLogs[] = $courseLog;
+        return $this;
+    }
+
+    /**
+     * Remove CourseLog
+     *
+     * @param CourseLog $courseLog
+     */
+    public function removeCourseLog(CourseLog $courseLog)
+    {
+        $this->courseLogs->removeElement($courseLog);
+    }
+
+    /**
+     * Get courseLogs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCourseLogs()
+    {
+        return $this->courseLogs;
     }
 }
