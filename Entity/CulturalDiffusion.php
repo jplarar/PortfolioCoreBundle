@@ -39,7 +39,7 @@ class CulturalDiffusion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="culturalDiffusions")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 

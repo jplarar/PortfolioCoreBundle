@@ -54,7 +54,7 @@ class InternationalProgram {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="internationalPrograms")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 

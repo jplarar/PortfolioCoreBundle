@@ -3,6 +3,7 @@
 namespace Portfolio\CoreBundle\Controller;
 
 use Portfolio\CoreBundle\Entity\CourseLog;
+use Portfolio\CoreBundle\Entity\RepresentativeTeam;
 use Portfolio\CoreBundle\Entity\Student;
 use Portfolio\CoreBundle\Entity\SubjectDropout;
 use Portfolio\CoreBundle\Entity\Toefl;
@@ -117,6 +118,49 @@ class LoadController extends Controller
             }
 
         }
+    }
+
+    public function sportsParseAction(Request $request)
+    {
+        /* @var UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file->getMimeType() != "application/xml") {
+            // No es un archivo XML
+            $this->createAccessDeniedException("Archivo con formato incorrecto.");
+        }
+        $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
+        $document->loadXml(file_get_contents($file->getPathname()));
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get array of students (Crawler Object)
+        $teams = $document->getElementsByTagName('RepresentativeTeam');
+
+        /** @var \DOMElement $rawTeam */
+        foreach($teams as $rawTeam)
+        {
+            $team = new RepresentativeTeam();
+            $team->setSport($rawTeam->getElementsByTagName('sport')->item(0)->nodeValue);
+            $team->setPeriod($rawTeam->getElementsByTagName('period')->item(0)->nodeValue);
+
+            // Look for student
+            /** @var \Portfolio\CoreBundle\Entity\Student $student */
+            $student = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')
+                ->find($rawTeam->getElementsByTagName('studentId')->item(0)->nodeValue);
+
+            if ($student) {
+                $team->setStudentId($student);
+                $em->persist($team);
+                $em->flush();
+            }
+
+        }
 
     }
+
+
 }

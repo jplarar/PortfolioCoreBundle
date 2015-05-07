@@ -61,7 +61,7 @@ class ChangeGrade {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="changeGrades")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 

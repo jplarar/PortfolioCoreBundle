@@ -43,7 +43,7 @@ class SubjectDropout {
 
     /**
      * @ORM\ManyToOne(targetEntity="Student", inversedBy="subjectDropouts")
-     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
+     * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false, onDelete="CASCADE")
      */
     protected $studentId;
 
