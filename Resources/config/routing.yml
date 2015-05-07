@@ -98,6 +98,15 @@ portfolio_control_load_cat_parse:
     pattern:    /load/cat/parse
     defaults:   { _controller: PortfolioCoreBundle:Load:catParse }
 
+#cat
+portfolio_control_load_cultural:
+    pattern:    /load/cultural
+    defaults:   { _controller: PortfolioCoreBundle:Load:cultural }
+
+portfolio_control_load_cultural_parse:
+    pattern:    /load/cultural/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:culturalParse }
+
 #groups
 portfolio_control_load_group:
     pattern:    /load/group
