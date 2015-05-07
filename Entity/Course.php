@@ -37,13 +37,31 @@ class Course {
     ## OBJECT RELATIONSHIP ##
     #########################
 
-    // none.
+    /**
+     * @ORM\OneToMany(targetEntity="SubjectDropout", mappedBy="courseId")
+     */
+    protected $subjectDropouts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ExtemporaneousExam", mappedBy="courseId")
+     */
+    protected $extemporaneousExams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ChangeGrade", mappedBy="courseId")
+     */
+    protected $changeGrades;
 
     #########################
     ##      CONSTRUCTOR    ##
     #########################
 
-    // none.
+    public function __construct()
+    {
+        $this->subjectDropouts = new ArrayCollection();
+        $this->$extemporaneousExams = new ArrayCollection();
+        $this->$changeGrades = new ArrayCollection();
+    }
 
     #########################
     ##   SPECIAL METHODS   ##
@@ -134,5 +152,102 @@ class Course {
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * Add SubjectDropout
+     *
+     * @param SubjectDropout $subjectDropout
+     * @return Course
+     */
+    public function addSubjectDropout(SubjectDropout $subjectDropout)
+    {
+        $this->subjectDropouts[] = $subjectDropout;
+        return $this;
+    }
+
+    /**
+     * Remove SubjectDropout
+     *
+     * @param SubjectDropout $subjectDropout
+     */
+    public function removeSubjectDropout(SubjectDropout $subjectDropout)
+    {
+        $this->subjectDropouts->removeElement($subjectDropout);
+    }
+
+    /**
+     * Get SubjectDropouts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSubjectDropouts()
+    {
+        return $this->subjectDropouts;
+    }
+
+
+    /**
+     * Add ExtemporaneousExam
+     *
+     * @param ExtemporaneousExam $extemporaneousExam
+     * @return Course
+     */
+    public function addExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
+    {
+        $this->extemporaneousExams[] = $extemporaneousExam;
+        return $this;
+    }
+
+    /**
+     * Remove ExtemporaneousExam
+     *
+     * @param ExtemporaneousExam $extemporaneousExam
+     */
+    public function removeExtemporaneousExam(ExtemporaneousExam $extemporaneousExam)
+    {
+        $this->extemporaneousExams->removeElement($extemporaneousExam);
+    }
+
+    /**
+     * Get ExtemporaneousExams
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExtemporaneousExams()
+    {
+        return $this->extemporaneousExams;
+    }
+
+    /**
+     * Add changeGrade
+     *
+     * @param ChangeGrade $changeGrade
+     * @return Course
+     */
+    public function addChangeGrade(ChangeGrade $changeGrade)
+    {
+        $this->changeGrades[] = $changeGrade;
+        return $this;
+    }
+
+    /**
+     * Remove changeGrade
+     *
+     * @param ChangeGrade $changeGrade
+     */
+    public function removeChangeGrade(ChangeGrade $changeGrade)
+    {
+        $this->changeGrades->removeElement($changeGrade);
+    }
+
+    /**
+     * Get changeGrades
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChangeGrades()
+    {
+        return $this->changeGrades;
     }
 }

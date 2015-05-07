@@ -53,6 +53,12 @@ class ExtemporaneousExam {
      */
     protected $studentId;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="extemporaneousExams")
+     * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
+     */
+    protected $courseId;
+
     #########################
     ##      CONSTRUCTOR    ##
     #########################
@@ -212,6 +218,26 @@ class ExtemporaneousExam {
     public function setStudentId($studentId)
     {
         $this->studentId = $studentId;
+        return $this;
+    }
+
+    /**
+     * Get CourseId
+     * @return Course
+     */
+    public function getCourseId()
+    {
+        return $this->courseId;
+    }
+
+    /**
+     * Set CourseId
+     * @param Course $courseId
+     * @return ExtemporaneousExam
+     */
+    public function setCourseId($courseId)
+    {
+        $this->courseId = $courseId;
         return $this;
     }
 }

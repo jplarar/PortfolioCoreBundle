@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
+ *
+ * This object is also used to represent the student courses
+ *
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="ChangeGrades")
@@ -19,7 +22,7 @@ class ChangeGrade {
     protected $changeGradeId;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $motive;
 
@@ -27,6 +30,21 @@ class ChangeGrade {
      * @ORM\Column(type="integer")
      */
     protected $period;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $semester;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $grade;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $newGrade;
 
     #########################
     ## OBJECT RELATIONSHIP ##
@@ -37,6 +55,12 @@ class ChangeGrade {
      * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
      */
     protected $studentId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Course", inversedBy="changeGrades")
+     * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
+     */
+    protected $courseId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -115,6 +139,75 @@ class ChangeGrade {
     }
 
     /**
+     * Set semester
+     *
+     * @param integer $semester
+     * @return ChangeGrade
+     */
+    public function setSemester($semester)
+    {
+        $this->semester = $semester;
+
+        return $this;
+    }
+
+    /**
+     * Get semester
+     *
+     * @return integer
+     */
+    public function getSemester()
+    {
+        return $this->semester;
+    }
+
+    /**
+     * Set grade
+     *
+     * @param integer $grade
+     * @return ChangeGrade
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+
+        return $this;
+    }
+
+    /**
+     * Get grade
+     *
+     * @return integer
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    /**
+     * Set newGrade
+     *
+     * @param integer $newGrade
+     * @return ChangeGrade
+     */
+    public function setNewGrade($newGrade)
+    {
+        $this->newGrade = $newGrade;
+
+        return $this;
+    }
+
+    /**
+     * Get newGrade
+     *
+     * @return integer
+     */
+    public function getNewGrade()
+    {
+        return $this->newGrade;
+    }
+
+    /**
      * Get StudentId
      * @return Student
      */
@@ -131,6 +224,26 @@ class ChangeGrade {
     public function setStudentId($studentId)
     {
         $this->studentId = $studentId;
+        return $this;
+    }
+
+    /**
+     * Get CourseId
+     * @return Course
+     */
+    public function getCourseId()
+    {
+        return $this->courseId;
+    }
+
+    /**
+     * Set CourseId
+     * @param Course $courseId
+     * @return ChangeGrade
+     */
+    public function setCourseId($courseId)
+    {
+        $this->courseId = $courseId;
         return $this;
     }
 
