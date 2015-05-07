@@ -355,7 +355,7 @@ class Student {
     /**
      * Set gpa
      *
-     * @param string $gpa
+     * @param double $gpa
      * @return Student
      */
     public function setGpa($gpa)
@@ -363,6 +363,39 @@ class Student {
         $this->gpa = $gpa;
 
         return $this;
+    }
+
+    /**
+     * Get units
+     *
+     * @return integer
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+
+    /**
+     * Set units
+     *
+     * @param integer $units
+     * @return Student
+     */
+    public function setUnits($units)
+    {
+        $this->units = $units;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return double
+     */
+    public function getGpa()
+    {
+        return $this->gpa;
     }
 
     /**

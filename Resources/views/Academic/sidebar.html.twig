@@ -1,25 +1,22 @@
 <div class="col-sm-3">
     <ul class="nav nav-pills nav-stacked">
         <li role="presentation"{% if sideactive == 'historia' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Historia</a>
-        </li>
-        <li role="presentation"{% if sideactive == 'horario' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Horario</a>
+            <a href="{{ path('portfolio_control_academic_history', {'id': id} ) }}">Historia</a>
         </li>
         <li role="presentation"{% if sideactive == 'calificaciones' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Calificaciones</a>
+            <a href="{{ path('portfolio_control_academic_score', {'id': id} ) }}">Calificaciones</a>
         </li>
         <li role="presentation"{% if sideactive == 'bajas' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Bajas</a>
+            <a href="{{ path('portfolio_control_academic_dropout', {'id': id} ) }}">Bajas</a>
         </li>
         <li role="presentation"{% if sideactive == 'toefl' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Toefl</a>
+            <a href="{{ path('portfolio_control_academic_toefl', {'id': id} ) }}">Toefl</a>
         </li>
         <li role="presentation"{% if sideactive == 'cambio' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Cambio Calificaciones</a>
+            <a href="{{ path('portfolio_control_academic_changeScore', {'id': id} ) }}">Cambio Calificaciones</a>
         </li>
         <li role="presentation"{% if sideactive == 'examenes' %} class="active"{% endif %}>
-            <a href="{{ path() }}">Exámenes Extemporáneos</a>
+            <a href="{{ path('portfolio_control_academic_extemporaneous', {'id': id} ) }}">Exámenes Extemporáneos</a>
         </li>
     </ul>
 </div>

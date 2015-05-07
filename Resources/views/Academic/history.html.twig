@@ -1,0 +1,61 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'historia' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>{{ student.fullname }}</h2>
+            <h3>{{ student.career }}</h3>
+            <p><b>Fecha de ingreso:	</b>{{ student.admissionDate|date('Y-m-d') }}</p>
+            <p><b>Estatus académico:	</b>{{ student.status }}</p>
+            <p><b>Semestre acreditado:	</b>{{ student.semester }}</p>
+            <p><b>Unidades permitidas a inscribir:	</b>{{ student.units }}</p>
+            <p><b>Promedio actual :	</b>{{ student.gpa }}</p>
+            <h3>Información personal</h3>
+            <p><b>Telefono :	</b>{{ student.telephone }}</p>
+            <p><b>Direccion Local :	</b>{{ student.localAddress }}</p>
+            <p><b>Direccion foranea :	</b>{{ student.foreignAddress }}</p>
+
+    {% for i in 1..student.semester %}
+            <div class="table-responsive">
+                <table class="table table-condensed" style="border-collapse:collapse;">
+                    <tbody>
+
+                    <tr>
+                        <th data-toggle="collapse" data-target="#semestre{{ i }}" class="accordion-toggle" aria-expanded="true">Semestre {{ i }}</th>
+                    </tr>
+                    <tr>
+                        <td colspan="12" class="hiddenRow"><div id="semestre{{ i }}" class="accordian-body collapse in" aria-expanded="true">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Clave</th>
+                                        <th>Materia</th>
+                                        <th>Calificación</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for courseLog in courseLogs %}
+                                        {% if courseLog.semester == i %}
+                                        <tr>
+                                            <td>{{ courseLog.courseCode }}</td>
+                                            <td>{{ courseLog.courseName }}</td>
+                                            <td>{{ courseLog.finalGrade }}</td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+    {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

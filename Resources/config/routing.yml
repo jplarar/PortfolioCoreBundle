@@ -13,3 +13,64 @@ logout:
 portfolio_control_dashboard:
     pattern:    /
     defaults:   { _controller: PortfolioCoreBundle:Dashboard:dashboard }
+
+## Search
+portfolio_control_search:
+    pattern:    /search
+    defaults:   { _controller: PortfolioCoreBundle:Search:search }
+
+## Academic
+portfolio_control_academic_history:
+    pattern:    /academic/history/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:history }
+
+portfolio_control_academic_score:
+    pattern:    /academic/score/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:score }
+
+portfolio_control_academic_dropout:
+    pattern:    /academic/dropout/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:dropout }
+
+portfolio_control_academic_toefl:
+    pattern:    /academic/toefl/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:toefl }
+
+portfolio_control_academic_changeScore:
+    pattern:    /academic/changeScore/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:changeScore }
+
+portfolio_control_academic_extemporaneous:
+    pattern:    /academic/extemporaneous/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Academic:extemporaneous }
+
+## Social Service
+portfolio_control_socialservice_list:
+    pattern:    /socialservice/list/{id}
+    defaults:   { _controller: PortfolioCoreBundle:SocialService:list }
+
+## Extracurricular
+portfolio_control_extracurricular_sport:
+    pattern:    /academic/sport/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Extracurricular:sport }
+
+portfolio_control_extracurricular_representative:
+    pattern:    /extracurricular/representative/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Extracurricular:representative }
+
+portfolio_control_extracurricular_cultural:
+    pattern:    /extracurricular/cultural/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Extracurricular:cultural }
+
+portfolio_control_extracurricular_groups:
+    pattern:    /extracurricular/groups/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Extracurricular:groups }
+
+portfolio_control_extracurricular_cat:
+    pattern:    /extracurricular/cat/{id}
+    defaults:   { _controller: PortfolioCoreBundle:Extracurricular:cat }
+
+## International Programs
+portfolio_control_internationalprogram_list:
+    pattern:    /internationalprogram/list/{id}
+    defaults:   { _controller: PortfolioCoreBundle:InternationalProgram:list }

@@ -41,6 +41,7 @@ nav.navbar-default {
 	border: 0 none;
 	border-radius: 0;
 	background-color: #4FA0B2;
+    margin-top: -20px;
 }
 
 nav .navbar-collapse {
@@ -59,6 +60,12 @@ nav.navbar-default .navbar-nav>li>a {
 
 nav.navbar-default .navbar-nav>li>a:hover, nav.navbar-default .navbar-nav>li>a:focus {
 	color: #18353F;
+}
+
+#showId {
+    color: #fff;
+    margin-top: 15px;
+    font-size: 15px;
 }
 
 /*-------------------- SUB-NAV -----------------------*/

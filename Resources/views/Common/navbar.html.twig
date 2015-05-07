@@ -3,18 +3,19 @@
         <div class="collapse navbar-collapse" id="my-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li{% if navactive == 'academico' %} class="active"{% endif %}>
-                    <a href="{{ path() }}">Académico</a>
+                    <a href="{{ path('portfolio_control_academic_history', {'id': id} ) }}">Académico</a>
                 </li>
                 <li{% if navactive == 'ss' %} class="active"{% endif %}>
-                    <a href="{{ path() }}">Servicio Social</a>
+                    <a href="{{ path('portfolio_control_socialservice_list', {'id': id} ) }}}">Servicio Social</a>
                 </li>
                 <li{% if navactive == 'extra' %} class="active"{% endif %}>
-                    <a href="{{ path() }}">Actividades Extracurriculares</a>
+                    <a href="{{ path('portfolio_control_extracurricular_sport', {'id': id} ) }}">Actividades Extracurriculares</a>
                 </li>
                 <li{% if navactive == 'pi' %} class="active"{% endif %}>
-                    <a href="{{ path() }}">Programas Internacionales</a>
+                    <a href="{{ path('portfolio_control_internationalprogram_list', {'id': id} ) }}">Programas Internacionales</a>
                 </li>
             </ul>
+            <p class="pull-right" id="showId">{{ id }}</p>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

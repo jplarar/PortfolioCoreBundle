@@ -126,7 +126,7 @@ class AcademicController extends Controller
             $em->flush();
 
             return $this->redirect(
-                $this->generateUrl('!!!!!!', array('id' => $id))
+                $this->generateUrl('portfolio_control_academic_extemporaneous', array('id' => $id))
             );
         }
 

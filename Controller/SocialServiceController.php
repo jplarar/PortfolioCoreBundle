@@ -31,7 +31,7 @@ ENDSQL;
         $stmt->execute();
         $results = $stmt->fetchAll();
 
-        return $this->render('PortfolioCoreBundle:Academic:score.html.twig', array(
+        return $this->render('PortfolioCoreBundle:SocialService:list.html.twig', array(
             'id' => $id,
             'socialServices' => $socialServices,
             'results' => $results
