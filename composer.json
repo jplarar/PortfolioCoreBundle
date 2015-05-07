@@ -1,0 +1,44 @@
+{
+    "name": "portfolio/core-bundle",
+    "description": "Core portfolio platform.",
+    "type": "symfony-bundle",
+    "keywords": [
+        "portfolio",
+        "corebundle"
+    ],
+    "homepage": "https://github.com/jplarar/PortfolioCoreBundle",
+    "license": "",
+    "authors": [
+        {
+            "name": "Juan Paulo Lara",
+            "email": "email@mail.com",
+            "homepage": "http://www.facebook.com",
+            "role": "creator,manager,architect,developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "symfony/config": "~2.1",
+        "symfony/dependency-injection": "~2.1",
+        "symfony/filesystem": "~2.1",
+        "symfony/form": "~2.1",
+        "symfony/framework-bundle": "~2.1",
+        "symfony/http-foundation": "~2.1",
+        "symfony/http-kernel": "~2.1",
+        "symfony/monolog-bundle": "~2.1",
+        "symfony/options-resolver": "~2.1",
+        "symfony/security": "~2.1",
+        "symfony/validator": "~2.1",
+        "sensio/framework-extra-bundle": "~2.1"
+    },
+    "suggest": {
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": {
+            "Portfolio\\CoreBundle": ""
+        }
+    },
+    "target-dir": "Portfolio/CoreBundle"
+}
