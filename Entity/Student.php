@@ -137,15 +137,15 @@ class Student {
     {
         $this->toefls = new ArrayCollection();
         $this->subjectDropouts = new ArrayCollection();
-        $this->$socialServices = new ArrayCollection();
-        $this->$sports = new ArrayCollection();
-        $this->$studentGroups = new ArrayCollection();
-        $this->$representativeTeams = new ArrayCollection();
+        $this->socialServices = new ArrayCollection();
+        $this->sports = new ArrayCollection();
+        $this->studentGroups = new ArrayCollection();
+        $this->representativeTeams = new ArrayCollection();
         $this->internationalPrograms = new ArrayCollection();
-        $this->$culturalDiffusions = new ArrayCollection();
-        $this->$changeGrades = new ArrayCollection();
+        $this->culturalDiffusions = new ArrayCollection();
+        $this->changeGrades = new ArrayCollection();
         $this->courseLogs = new ArrayCollection();
-        $this->$addictionsAwareness = new ArrayCollection();
+        $this->addictionsAwareness = new ArrayCollection();
     }
 
     #########################

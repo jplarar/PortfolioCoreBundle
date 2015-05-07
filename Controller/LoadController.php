@@ -53,7 +53,7 @@ class LoadController extends Controller
             $student->setForeignAddress($rawStudent->getElementsByTagName('foreignAddress')->item(0)->nodeValue);
             $student->setTelephone($rawStudent->getElementsByTagName('telephone')->item(0)->nodeValue);
             $student->setCareer($rawStudent->getElementsByTagName('career')->item(0)->nodeValue);
-            $student->setAdmissionDate($rawStudent->getElementsByTagName('admissionDate')->item(0)->nodeValue);
+            $student->setAdmissionDate(new \DateTime($rawStudent->getElementsByTagName('admissionDate')->item(0)->nodeValue));
             $student->setStatus($rawStudent->getElementsByTagName('status')->item(0)->nodeValue);
             $student->setGpa($rawStudent->getElementsByTagName('gpa')->item(0)->nodeValue);
             $student->setUnits($rawStudent->getElementsByTagName('units')->item(0)->nodeValue);
