@@ -241,7 +241,7 @@ class ChangeGrade {
 
     /**
      * Set CourseCode
-     * @param Course $courseCode
+     * @param string $courseCode
      * @return ChangeGrade
      */
     public function setCourseCode($courseCode)

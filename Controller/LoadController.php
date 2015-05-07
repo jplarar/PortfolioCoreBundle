@@ -4,6 +4,7 @@ namespace Portfolio\CoreBundle\Controller;
 
 use Portfolio\CoreBundle\Entity\CulturalDiffusion;
 use Portfolio\CoreBundle\Entity\Sport;
+use Portfolio\CoreBundle\Entity\ChangeGrade;
 use Portfolio\CoreBundle\Entity\AddictionAwareness;
 use Portfolio\CoreBundle\Entity\CourseLog;
 use Portfolio\CoreBundle\Entity\RepresentativeTeam;
@@ -188,6 +189,25 @@ class LoadController extends Controller
                 $courseLog->setStudentId($student);
 
                 $em->persist($courseLog);
+                $em->flush();
+            }
+
+            // Crawl ChangeGrades
+            $changeGrades = $rawStudent->getElementsByTagName('ChangeGrades');
+
+            /** @var \DOMElement $rawCourseLog */
+            foreach($changeGrades as $rawCourseLog)
+            {
+                $changeGrade = new ChangeGrade();
+                $changeGrade->setPeriod($rawCourseLog->getElementsByTagName('period')->item(0)->nodeValue);
+                $changeGrade->setSemester($rawCourseLog->getElementsByTagName('semester')->item(0)->nodeValue);
+                $changeGrade->setMotive($rawCourseLog->getElementsByTagName('motive')->item(0)->nodeValue);
+                $changeGrade->setGrade($rawCourseLog->getElementsByTagName('grade')->item(0)->nodeValue);
+                $changeGrade->setNewGrade($rawCourseLog->getElementsByTagName('newGrade')->item(0)->nodeValue);
+                $changeGrade->setCourseCode($rawCourseLog->getElementsByTagName('courseCode')->item(0)->nodeValue);
+                $changeGrade->setStudentId($student);
+
+                $em->persist($changeGrade);
                 $em->flush();
             }
 
