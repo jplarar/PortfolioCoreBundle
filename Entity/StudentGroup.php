@@ -149,4 +149,13 @@ class StudentGroup {
         return $this;
     }
 
+    /**
+     * Get StudentId
+     * @return StudentGroup
+     */
+    public function getStudentId()
+    {
+        return $this->studentId;
+    }
+
 }

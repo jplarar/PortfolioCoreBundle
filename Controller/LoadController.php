@@ -10,6 +10,9 @@ use Portfolio\CoreBundle\Entity\RepresentativeTeam;
 use Portfolio\CoreBundle\Entity\Student;
 use Portfolio\CoreBundle\Entity\SubjectDropout;
 use Portfolio\CoreBundle\Entity\Toefl;
+use Portfolio\CoreBundle\Entity\InternationalProgram;
+use Portfolio\CoreBundle\Entity\SocialService;
+use Portfolio\CoreBundle\Entity\StudentGroup;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -18,7 +21,9 @@ class LoadController extends Controller
 {
     public function listAction()
     {
-        return $this->render('PortfolioCoreBundle:Load:list.html.twig');
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => ""
+        ));
     }
 
     public function academicAction()
@@ -105,6 +110,15 @@ class LoadController extends Controller
         // Get array of students (Crawler Object)
         $students = $document->getElementsByTagName('Student');
 
+        //erase all
+        $studentsToErase = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')->findAll();
+
+        foreach($studentsToErase as $std)
+        {
+            $em->remove($std);
+        }
+        $em->flush();
+
         /** @var \DOMElement $rawStudent */
         foreach($students as $rawStudent)
         {
@@ -165,6 +179,7 @@ class LoadController extends Controller
             {
                 $courseLog = new CourseLog();
                 $courseLog->setPeriod($rawCourseLog->getElementsByTagName('period')->item(0)->nodeValue);
+                $courseLog->setSemester($rawCourseLog->getElementsByTagName('semester')->item(0)->nodeValue);
                 $courseLog->setFinalGrade($rawCourseLog->getElementsByTagName('finalGrade')->item(0)->nodeValue);
                 $courseLog->setFirstGrade($rawCourseLog->getElementsByTagName('firstGrade')->item(0)->nodeValue);
                 $courseLog->setSecondGrade($rawCourseLog->getElementsByTagName('secondGrade')->item(0)->nodeValue);
@@ -177,9 +192,12 @@ class LoadController extends Controller
             }
 
         }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
     }
 
-    public function teamsParseAction(Request $request)
+    public function representativeParseAction(Request $request)
     {
         /* @var UploadedFile $file */
         $file = $request->files->get('file');
@@ -217,6 +235,9 @@ class LoadController extends Controller
                 $em->flush();
             }
         }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
     }
 
 
@@ -259,9 +280,12 @@ class LoadController extends Controller
                 $em->flush();
             }
         }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
     }
 
-    public function sportsParseAction(Request $request)
+    public function sportParseAction(Request $request)
     {
         /* @var UploadedFile $file */
         $file = $request->files->get('file');
@@ -300,6 +324,9 @@ class LoadController extends Controller
                 $em->flush();
             }
         }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
     }
 
     public function culturalParseAction(Request $request)
@@ -341,6 +368,151 @@ class LoadController extends Controller
                 $em->flush();
             }
         }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
+    }
+
+    public function internationalParseAction(Request $request)
+    {
+        /* @var UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file->getMimeType() != "application/xml") {
+            // No es un archivo XML
+            $this->createAccessDeniedException("Archivo con formato incorrecto.");
+        }
+        $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
+        $document->loadXml(file_get_contents($file->getPathname()));
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get array of students (Crawler Object)
+        $internationals = $document->getElementsByTagName('InternationalProgram');
+
+        /** @var \DOMElement $rawTeam */
+        foreach($internationals as $rawTeam)
+        {
+            $international = new InternationalProgram();
+            $international->setUniversity($rawTeam->getElementsByTagName('university')->item(0)->nodeValue);
+            $international->setCountry($rawTeam->getElementsByTagName('country')->item(0)->nodeValue);
+            $international->setCode($rawTeam->getElementsByTagName('code')->item(0)->nodeValue);
+            $international->setType($rawTeam->getElementsByTagName('type')->item(0)->nodeValue);
+            $international->setPeriod($rawTeam->getElementsByTagName('period')->item(0)->nodeValue);
+            $international->setStatus($rawTeam->getElementsByTagName('status')->item(0)->nodeValue);
+            // Look for student
+            /** @var \Portfolio\CoreBundle\Entity\Student $student */
+            $student = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')
+                ->find($rawTeam->getElementsByTagName('studentId')->item(0)->nodeValue);
+
+            if ($student) {
+                $international->setStudentId($student);
+                $em->persist($international);
+                $em->flush();
+            }
+
+        }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
+
+    }
+
+    public function socialParseAction(Request $request)
+    {
+        /* @var UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file->getMimeType() != "application/xml") {
+            // No es un archivo XML
+            $this->createAccessDeniedException("Archivo con formato incorrecto.");
+        }
+        $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
+        $document->loadXml(file_get_contents($file->getPathname()));
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get array of students (Crawler Object)
+        $socialServices = $document->getElementsByTagName('SocialService');
+
+        /** @var \DOMElement $rawTeam */
+        foreach($socialServices as $rawTeam)
+        {
+            $socialService = new SocialService();
+            $socialService->setPeriod($rawTeam->getElementsByTagName('period')->item(0)->nodeValue);
+            $socialService->setCampus($rawTeam->getElementsByTagName('campus')->item(0)->nodeValue);
+            $socialService->setType($rawTeam->getElementsByTagName('type')->item(0)->nodeValue);
+            $socialService->setCompany($rawTeam->getElementsByTagName('company')->item(0)->nodeValue);
+            $socialService->setRegisteredHours($rawTeam->getElementsByTagName('registeredHours')->item(0)->nodeValue);
+            $socialService->setAccreditedHours($rawTeam->getElementsByTagName('accreditedHours')->item(0)->nodeValue);
+            $socialService->setStatus($rawTeam->getElementsByTagName('status')->item(0)->nodeValue);
+            // Look for student
+            /** @var \Portfolio\CoreBundle\Entity\Student $student */
+            $student = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')
+                ->find($rawTeam->getElementsByTagName('studentId')->item(0)->nodeValue);
+
+            if ($student) {
+                $socialService->setStudentId($student);
+                $em->persist($socialService);
+                $em->flush();
+            }
+
+        }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
+
+    }
+
+    public function groupParseAction(Request $request)
+    {
+        /* @var UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file->getMimeType() != "application/xml") {
+            // No es un archivo XML
+            $this->createAccessDeniedException("Archivo con formato incorrecto.");
+        }
+        $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
+        $document->loadXml(file_get_contents($file->getPathname()));
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get array of students (Crawler Object)
+        $studentGroups = $document->getElementsByTagName('StudentGroups');
+
+        /** @var \DOMElement $rawTeam */
+        foreach($studentGroups as $rawTeam)
+        {
+            $studentGroup = new StudentGroup();
+            $studentGroup->setGroup($rawTeam->getElementsByTagName('group')->item(0)->nodeValue);
+            $studentGroup->setPosition($rawTeam->getElementsByTagName('position')->item(0)->nodeValue);
+            $studentGroup->setPeriod($rawTeam->getElementsByTagName('period')->item(0)->nodeValue);
+            // Look for student
+            /** @var \Portfolio\CoreBundle\Entity\Student $student */
+            $student = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')
+                ->find($rawTeam->getElementsByTagName('studentId')->item(0)->nodeValue);
+
+            if ($student) {
+                $studentGroup->setStudentId($student);
+                $em->persist($studentGroup);
+                $em->flush();
+            }
+
+        }
+        return $this->render('PortfolioCoreBundle:Load:list.html.twig', array(
+            'error' => "Carga completa"
+        ));
+
     }
 
 }
