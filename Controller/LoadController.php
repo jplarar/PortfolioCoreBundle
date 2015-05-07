@@ -7,8 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-use Symfony\Component\DomCrawler\Crawler;
-
 class LoadController extends Controller
 {
     public function listAction()
@@ -34,31 +32,34 @@ class LoadController extends Controller
             $this->createAccessDeniedException("Archivo con formato incorrecto.");
         }
         $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
         $document->loadXml(file_get_contents($file->getPathname()));
-        exit(\Doctrine\Common\Util\Debug::dump($document));
-        /** @var \Symfony\Component\DomCrawler\Crawler  $crawler */
-        $crawler = new Crawler();
-        $crawler->addDocument($document);
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
 
         // Get array of students (Crawler Object)
-        $students = $crawler->filter("Student");
+        $students = $document->getElementsByTagName('Student');
 
-        for ($i = 0; $i < $students->count(); $i++)
+        /** @var \DOMElement $rawStudent */
+        foreach($students as $rawStudent)
         {
-            $rawStudent = $students->getNode($i);
-            // Haz un print de rawStudent para ver si vas bien
             $student = new Student();
             $student->setStudentId($rawStudent->getAttribute('id'));
-            // Si si, creo que asi los puedes ir llamando
-            $student->setFullName($rawStudent->getElementsByTagName('fullName')->item(0)->textContent);
+            $student->setFullName($rawStudent->getElementsByTagName('fullName')->item(0)->nodeValue);
+            $student->setSemester($rawStudent->getElementsByTagName('semester')->item(0)->nodeValue);
+            $student->setLocalAddress($rawStudent->getElementsByTagName('localAddress')->item(0)->nodeValue);
+            $student->setForeignAddress($rawStudent->getElementsByTagName('foreignAddress')->item(0)->nodeValue);
+            $student->setTelephone($rawStudent->getElementsByTagName('telephone')->item(0)->nodeValue);
+            $student->setCareer($rawStudent->getElementsByTagName('career')->item(0)->nodeValue);
+            $student->setAdmissionDate($rawStudent->getElementsByTagName('admissionDate')->item(0)->nodeValue);
+            $student->setStatus($rawStudent->getElementsByTagName('status')->item(0)->nodeValue);
+            $student->setGpa($rawStudent->getElementsByTagName('gpa')->item(0)->nodeValue);
+            $student->setUnits($rawStudent->getElementsByTagName('units')->item(0)->nodeValue);
 
-            // Te traes el siguiente arreglo y haces el mismo pedo
-            $rawToefls = $rawStudent->getElementsByTagName('Toefls')->item(0)->childNodes;
-            for ($t = 0; $t < $rawToefls->length; $t++) {
-                $rawToefl = $rawToefls->item($t)->childNodes;
-
-            }
-
+            $em->persist($student);
+            $em->flush();
         }
 
     }
