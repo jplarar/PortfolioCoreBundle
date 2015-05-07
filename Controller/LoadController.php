@@ -110,6 +110,7 @@ class LoadController extends Controller
                 $courseLog->setSecondGrade($rawCourseLog->getElementsByTagName('secondGrade')->item(0)->nodeValue);
                 $courseLog->setCourseCode($rawCourseLog->getElementsByTagName('courseCode')->item(0)->nodeValue);
                 $courseLog->setCourseName($rawCourseLog->getElementsByTagName('courseName')->item(0)->nodeValue);
+                $courseLog->setStudentId($student);
 
                 $em->persist($courseLog);
                 $em->flush();
