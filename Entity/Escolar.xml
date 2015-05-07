@@ -1,0 +1,65 @@
+<Department name="escolar">
+    <Students>
+        <Student id="A00841759">
+            <fullName>Pedro Garza Villarreal</fullName>
+            <semester>5</semester>
+            <localAddress nullabe="true"></localAddress>
+            <foreignAddress nullabe="true"></foreignAddress>
+            <telephone></telephone>
+            <career></career>
+            <admissionDate></admissionDate>
+            <status></status>
+            <gpa></gpa>
+            <units></units>z
+        </Student>
+    </Students>
+
+    <Toefls>
+        <Toefl id="">
+            <score></score>
+            <date></date>
+            <studentId></studentId>
+        </Toefl>
+    </Toefls>
+
+    <Courses>
+        <Course id="">
+            <units></units>
+            <name></name>
+            <code></code>
+        </Course>
+    </Courses>
+
+    <ChangeGrades>
+        <ChangeGrade id="">
+            <motive nullabe="true"></motive>
+            <period></period>
+            <semester></semester>
+            <grade></grade>
+            <newGrade nullabe="true"></newGrade>
+            <studentId></studentId>
+            <courseId></courseId>
+        </ChangeGrade>
+    </ChangeGrades>
+
+    <SubjectDropouts>
+        <SubjectDropout id="">
+            <motive></motive>
+            <period></period>
+            <studentId></studentId>
+            <courseId></courseId>
+        </SubjectDropout>
+    </SubjectDropouts>
+
+    <ExtemporaneousExams>
+        <ExtemporaneousExam id="">
+            <period></period>
+            <exam></exam>
+            <originalDate></originalDate>
+            <newDate></newDate>
+            <motive></motive>
+            <studentId></studentId>
+            <courseId></courseId>
+        </ExtemporaneousExam>
+    </ExtemporaneousExams>
+</Department>

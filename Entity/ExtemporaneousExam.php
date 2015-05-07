@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Table(name="ExtemporaneousExams")
  */
-class ExtemporaneousExam {
+    class ExtemporaneousExam {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer", unique=TRUE)
