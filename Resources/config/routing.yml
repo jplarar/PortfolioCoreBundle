@@ -80,6 +80,7 @@ portfolio_control_load_list:
     pattern:    /load/list
     defaults:   { _controller: PortfolioCoreBundle:Load:list }
 
+# academic
 portfolio_control_load_academic:
     pattern:    /load/academic
     defaults:   { _controller: PortfolioCoreBundle:Load:academic }
@@ -87,3 +88,60 @@ portfolio_control_load_academic:
 portfolio_control_load_academic_parse:
     pattern:    /load/academic/parse
     defaults:   { _controller: PortfolioCoreBundle:Load:academicParse }
+
+#cat
+portfolio_control_load_cat:
+    pattern:    /load/cat
+    defaults:   { _controller: PortfolioCoreBundle:Load:cat }
+
+portfolio_control_load_cat_parse:
+    pattern:    /load/cat/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:catParse }
+
+#groups
+portfolio_control_load_group:
+    pattern:    /load/group
+    defaults:   { _controller: PortfolioCoreBundle:Load:group }
+
+portfolio_control_load_group_parse:
+    pattern:    /load/group/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:groupParse }
+
+#international
+portfolio_control_load_international:
+    pattern:    /load/international
+    defaults:   { _controller: PortfolioCoreBundle:Load:international }
+
+portfolio_control_load_international_parse:
+    pattern:    /load/international/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:internationalParse }
+
+#representative
+portfolio_control_load_representative:
+    pattern:    /load/representative
+    defaults:   { _controller: PortfolioCoreBundle:Load:representative }
+
+portfolio_control_load_representative_parse:
+    pattern:    /load/representative/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:representativeParse }
+
+#social
+portfolio_control_load_social:
+    pattern:    /load/social
+    defaults:   { _controller: PortfolioCoreBundle:Load:social }
+
+portfolio_control_load_social_parse:
+    pattern:    /load/social/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:socialParse }
+
+#sport
+portfolio_control_load_sport:
+    pattern:    /load/sport
+    defaults:   { _controller: PortfolioCoreBundle:Load:sport }
+
+portfolio_control_load_sport_parse:
+    pattern:    /load/sport/parse
+    defaults:   { _controller: PortfolioCoreBundle:Load:sportParse }
+
+
+
