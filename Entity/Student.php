@@ -169,6 +169,17 @@ class Student {
     }
 
     /**
+     * Set StudentId
+     * @param int $studentId
+     * @return Student
+     */
+    public function setStudentId($studentId)
+    {
+        $this->studentId = $studentId;
+        return $this;
+    }
+
+    /**
      * Set fullName
      *
      * @param string $fullName
