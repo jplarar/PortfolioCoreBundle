@@ -2,6 +2,7 @@
 
 namespace Portfolio\CoreBundle\Controller;
 
+use Portfolio\CoreBundle\Entity\CulturalDiffusion;
 use Portfolio\CoreBundle\Entity\Sport;
 use Portfolio\CoreBundle\Entity\AddictionAwareness;
 use Portfolio\CoreBundle\Entity\CourseLog;
@@ -301,5 +302,45 @@ class LoadController extends Controller
         }
     }
 
+    public function culturalParseAction(Request $request)
+    {
+        /* @var UploadedFile $file */
+        $file = $request->files->get('file');
+
+        if ($file->getMimeType() != "application/xml") {
+            // No es un archivo XML
+            $this->createAccessDeniedException("Archivo con formato incorrecto.");
+        }
+        $document = new \DOMDocument();
+        $document->preserveWhiteSpace = FALSE;
+        $document->loadXml(file_get_contents($file->getPathname()));
+
+        // Initialize entity manager
+        $em = $this->getDoctrine()->getManager();
+        $em->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get array of students (Crawler Object)
+        $activities = $document->getElementsByTagName('CulturalDiffusion');
+
+        /** @var \DOMElement $rawActivity */
+        foreach($activities as $rawActivity)
+        {
+            $activity = new CulturalDiffusion();
+            $activity->setPeriod($rawActivity->getElementsByTagName('period')->item(0)->nodeValue);
+            $activity->setActivity($rawActivity->getElementsByTagName('activity')->item(0)->nodeValue);
+            $activity->setRole($rawActivity->getElementsByTagName('role')->item(0)->nodeValue);
+
+            // Look for student
+            /** @var \Portfolio\CoreBundle\Entity\Student $student */
+            $student = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\Student')
+                ->find($rawActivity->getElementsByTagName('studentId')->item(0)->nodeValue);
+
+            if ($student) {
+                $activity->setStudentId($student);
+                $em->persist($activity);
+                $em->flush();
+            }
+        }
+    }
 
 }
