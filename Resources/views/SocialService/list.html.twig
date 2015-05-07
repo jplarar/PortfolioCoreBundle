@@ -1,0 +1,61 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'ss' %}
+{% set sideactive = 'horas' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:SocialService:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Resumen del Alumno {{ id }}</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Horas SSC</th>
+                        <th>Horas SSP</th>
+                        <th>Horas Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ ssc }}</td>
+                        <td>{{ ssp }}</td>
+                        <td>{{ sum }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <h2>Proyectos y actividades de aprendizaje ciudadano</h2>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Periodo</th>
+                        <th>Campus</th>
+                        <th>Tipo</th>
+                        <th>Empresa</th>
+                        <th>Horas Registradas</th>
+                        <th>Horas Acreditadas</th>
+                        <th>Estatus</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for socialService in socialServices %}
+                    <tr>
+                        <td>{{ socialService.period }}</td>
+                        <td>{{ socialService.campus }}</td>
+                        <td>{{ socialService.type }}</td>
+                        <td>{{ socialService.company }}</td>
+                        <td>{{ socialService.registeredHours }}</td>
+                        <td>{{ socialService.accreditedHours }}</td>
+                        <td>{{ socialService.status }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

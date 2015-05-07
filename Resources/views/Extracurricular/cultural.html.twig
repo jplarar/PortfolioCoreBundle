@@ -1,0 +1,34 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'extra' %}
+{% set sideactive = 'cultural' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Extracurricular:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Difusión Cultural</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Rol</th>
+                        <th>Periodo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for culturalDiffusion in culturalDiffusions %}
+                    <tr>
+                        <td>{{ culturalDiffusion.activity }}</td>
+                        <td>{{ culturalDiffusion.role }}</td>
+                        <td>{{ culturalDiffusion.period }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+{% set navactive = 'pi' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:InternationalProgram:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Historia de programas internacionales</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Universidad</th>
+                        <th>Pais</th>
+                        <th>Tipo</th>
+                        <th>Periodo</th>
+                        <th>Estatus</th>
+                        <th>Codigo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for internationalsProgram in internationalsPrograms %}
+                    <tr>
+                        <td>{{ internationalsProgram.university }}</td>
+                        <td>{{ internationalsProgram.country }}</td>
+                        <td>{{ internationalsProgram.type }}</td>
+                        <td>{{ internationalsProgram.period }}</td>
+                        <td>{{ internationalsProgram.status }}</td>
+                        <td>{{ internationalsProgram.code }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

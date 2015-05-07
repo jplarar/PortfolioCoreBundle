@@ -1,0 +1,34 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'extra' %}
+{% set sideactive = 'groups' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Extracurricular:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Grupos estudiantiles</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Grupo</th>
+                        <th>Posición</th>
+                        <th>Periodo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for studentGroup in studentGroups %}
+                    <tr>
+                        <td>{{ studentGroup.group }}</td>
+                        <td>{{ studentGroup.position }}</td>
+                        <td>{{ studentGroup.period }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

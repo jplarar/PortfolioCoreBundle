@@ -1,0 +1,34 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'toefl' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>TOEFL</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Puntaje</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for toefl in toefls %}
+                        <tr>
+                            <td>{{ toefl.score }}</td>
+                            <td>{{ toefl.date|date('Y-m-d') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div><h1>Puntaje más alto: {{ max }}</h1></div>
+				</div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"{% if sideactive == 'sport' %} class="active"{% endif %}>
+            <a href="{{ path('portfolio_control_extracurricular_sport', {'id': id} ) }}">Deportes</a>
+        </li>
+        <li role="presentation"{% if sideactive == 'representative' %} class="active"{% endif %}>
+            <a href="{{ path('portfolio_control_extracurricular_representative', {'id': id} ) }}">Alto Rendimiento</a>
+        </li>
+        <li role="presentation"{% if sideactive == 'cultural' %} class="active"{% endif %}>
+            <a href="{{ path('portfolio_control_extracurricular_cultural', {'id': id} ) }}">Difusión Cultural</a>
+        </li>
+        <li role="presentation"{% if sideactive == 'groups' %} class="active"{% endif %}>
+            <a href="{{ path('portfolio_control_extracurricular_groups', {'id': id} ) }}">Gobierno Estudiantil</a>
+        </li>
+        <li role="presentation"{% if sideactive == 'cat' %} class="active"{% endif %}>
+            <a href="{{ path('portfolio_control_extracurricular_cat', {'id': id} ) }}">CAT</a>
+        </li>
+    </ul>
+</div>

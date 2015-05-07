@@ -63,14 +63,25 @@ class AcademicController extends Controller
             array('date' => 'ASC')
         );
 
-        $query = $repository->createQueryBuilder('t')
-            ->select('MAX(t.score) AS max');
-        $max = $query->getQuery()->getOneOrNullResult();
+        $sql = <<<ENDSQL
+SELECT
+    MAX(t.score) as max
+FROM
+    Toefls as t
+WHERE
+    studentId = :studentId
+ENDSQL;
+        /* @var \Doctrine\ORM\EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->bindValue('studentId', $id);
+        $stmt->execute();
+        $max = $stmt->fetch(0);
 
         return $this->render('PortfolioCoreBundle:Academic:toefl.html.twig', array(
             'id' => $id,
             'toefls' => $toefls,
-            'max' => $max
+            'max' => $max['max']
         ));
     }
 

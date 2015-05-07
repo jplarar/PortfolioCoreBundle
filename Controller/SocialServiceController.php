@@ -14,27 +14,28 @@ class SocialServiceController extends Controller
             'studentId' => $id
         ));
 
-        $sql = <<<ENDSQL
-SELECT
-	SUM(ss.accreditedHours) as hours,
-	ss.type
-FROM SocialServices as ss
-WHERE
-ss.studentId = :studentId
-GROUP BY DATE(ss.type)
-ENDSQL;
+        $sum = 0;
+        $ssp = 0;
+        $ssc = 0;
+        if ($socialServices) {
+            /** @var \Portfolio\Corebundle\Entity\SocialService $result */
+            foreach($socialServices as $result) {
+                $sum = $sum + $result->getAccreditedHours();
+                if ($result->getType() == 'SSC') {
+                    $ssc = $ssc + $result->getAccreditedHours();
+                } else {
+                    $ssp = $ssp + $result->getAccreditedHours();
+                }
+            }
+        }
 
-        /* @var \Doctrine\ORM\EntityManager $em */
-        $em = $this->getDoctrine()->getManager();
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->bindValue('studentId', $id);
-        $stmt->execute();
-        $results = $stmt->fetchAll();
 
         return $this->render('PortfolioCoreBundle:SocialService:list.html.twig', array(
             'id' => $id,
             'socialServices' => $socialServices,
-            'results' => $results
+            'ssc' => $ssc,
+            'ssp' => $ssp,
+            'sum' => $sum
         ));
     }
 }

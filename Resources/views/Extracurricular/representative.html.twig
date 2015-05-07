@@ -1,0 +1,32 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'extra' %}
+{% set sideactive = 'representative' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Extracurricular:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Equipos representativos</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Deporte</th>
+                        <th>Periodo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for representativeTeam in representativeTeams %}
+                    <tr>
+                        <td>{{ representativeTeam.sport }}</td>
+                        <td>{{ representativeTeam.period }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

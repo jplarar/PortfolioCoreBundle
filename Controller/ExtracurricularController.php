@@ -24,13 +24,13 @@ class ExtracurricularController extends Controller
     {
         /* @var \Doctrine\ORM\EntityRepository $repository */
         $repository = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\RepresentativeTeam');
-        $representativeTeam = $repository->findBy(array(
+        $representativeTeams = $repository->findBy(array(
             'studentId' => $id
         ));
 
         return $this->render('PortfolioCoreBundle:Extracurricular:representative.html.twig', array(
             'id' => $id,
-            'representativeTeam' => $representativeTeam
+            'representativeTeams' => $representativeTeams
         ));
     }
 
@@ -38,13 +38,13 @@ class ExtracurricularController extends Controller
     {
         /* @var \Doctrine\ORM\EntityRepository $repository */
         $repository = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\CulturalDiffusion');
-        $culturalDiffusion = $repository->findBy(array(
+        $culturalDiffusions = $repository->findBy(array(
             'studentId' => $id
         ));
 
         return $this->render('PortfolioCoreBundle:Extracurricular:cultural.html.twig', array(
             'id' => $id,
-            'culturalDiffusion' => $culturalDiffusion
+            'culturalDiffusions' => $culturalDiffusions
         ));
     }
 
@@ -52,13 +52,13 @@ class ExtracurricularController extends Controller
     {
         /* @var \Doctrine\ORM\EntityRepository $repository */
         $repository = $this->getDoctrine()->getRepository('Portfolio\CoreBundle\Entity\StudentGroup');
-        $studentGroup = $repository->findBy(array(
+        $studentGroups = $repository->findBy(array(
             'studentId' => $id
         ));
 
         return $this->render('PortfolioCoreBundle:Extracurricular:groups.html.twig', array(
             'id' => $id,
-            'studentGroup' => $studentGroup
+            'studentGroups' => $studentGroups
         ));
     }
 

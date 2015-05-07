@@ -1,0 +1,42 @@
+{% extends 'PortfolioCoreBundle:Common:layout.html.twig' %}
+
+{% set navactive = 'academico' %}
+{% set sideactive = 'cambio' %}
+
+{% block content %}
+    <div class="row">
+        {% include 'PortfolioCoreBundle:Academic:sidebar.html.twig' %}
+        <div class="col-sm-9 contenido">
+            <h2>Cambio de Calificaciones</h2>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Materia</th>
+                        <th>Periodo</th>
+                        <th>Semestre</th>
+                        <th>Calificación pasada</th>
+                        <th>Calificación nueva</th>
+                        <th>Motivo</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for changeGrade in changeGrades %}
+                        <tr>
+                            <td>{{ changeGrade.courseCode }}</td>
+                            <td>{{ changeGrade.courseName }}</td>
+                            <td>{{ changeGrade.period }}</td>
+                            <td>{{ changeGrade.semester }}</td>
+                            <td>{{ changeGrade.grade }}</td>
+                            <td>{{ changeGrade.newGrade }}</td>
+                            <td>{{ changeGrade.motive }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
