@@ -3,7 +3,6 @@
 namespace Portfolio\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -28,6 +27,16 @@ class SubjectDropout {
      */
     protected $period;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $courseCode;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $courseName;
+
     #########################
     ## OBJECT RELATIONSHIP ##
     #########################
@@ -37,12 +46,6 @@ class SubjectDropout {
      * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
      */
     protected $studentId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Course", inversedBy="subjectDropouts")
-     * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
-     */
-    protected $courseId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -136,21 +139,42 @@ class SubjectDropout {
 
     /**
      * Get CourseId
-     * @return Course
+     * @return string
      */
-    public function getCourseId()
+    public function getCourseCode()
     {
-        return $this->courseId;
+        return $this->courseCode;
     }
 
     /**
-     * Set CourseId
-     * @param Course $courseId
+     * Set CourseCode
+     * @param Course $courseCode
      * @return SubjectDropout
      */
-    public function setCourseId($courseId)
+    public function setCourseCode($courseCode)
     {
-        $this->courseId = $courseId;
+        $this->courseCode = $courseCode;
         return $this;
     }
+
+    /**
+     * Get CourseName
+     * @return string
+     */
+    public function getCourseName()
+    {
+        return $this->courseName;
+    }
+
+    /**
+     * Set CourseName
+     * @param string $courseName
+     * @return SubjectDropout
+     */
+    public function setCourseName($courseName)
+    {
+        $this->courseName = $courseName;
+        return $this;
+    }
+
 }

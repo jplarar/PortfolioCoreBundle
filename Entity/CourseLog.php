@@ -33,7 +33,27 @@ class CourseLog {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $grade;
+    protected $finalGrade;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $firstGrade;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $secondGrade;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $courseCode;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $courseName;
 
     #########################
     ## OBJECT RELATIONSHIP ##
@@ -44,12 +64,6 @@ class CourseLog {
      * @ORM\JoinColumn(name="studentId", referencedColumnName="studentId", nullable=false)
      */
     protected $studentId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Course", inversedBy="courseLogs")
-     * @ORM\JoinColumn(name="courseId", referencedColumnName="courseId", nullable=false)
-     */
-    protected $courseId;
 
     #########################
     ##      CONSTRUCTOR    ##
@@ -76,7 +90,7 @@ class CourseLog {
      */
     public function getCourseLogId()
     {
-        return $this->changeGradeId;
+        return $this->courseLogId;
     }
 
     /**
@@ -126,26 +140,72 @@ class CourseLog {
     }
 
     /**
-     * Set grade
+     * Get finalGrade
      *
-     * @param integer $grade
+     * @return integer
+     */
+    public function getFinalGrade()
+    {
+        return $this->finalGrade;
+    }
+
+    /**
+     * Set finalGrade
+     *
+     * @param integer $finalGrade
      * @return CourseLog
      */
-    public function setGrade($grade)
+    public function setFinalGrade($finalGrade)
     {
-        $this->grade = $grade;
+        $this->finalGrade = $finalGrade;
 
         return $this;
     }
 
     /**
-     * Get grade
+     * Get firstGrade
      *
      * @return integer
      */
-    public function getGrade()
+    public function getFirstGrade()
     {
-        return $this->grade;
+        return $this->firstGrade;
+    }
+
+    /**
+     * Set firstGrade
+     *
+     * @param integer $firstGrade
+     * @return CourseLog
+     */
+    public function setFirstGrade($firstGrade)
+    {
+        $this->firstGrade = $firstGrade;
+
+        return $this;
+    }
+
+    /**
+     * Get secondGrade
+     *
+     * @return integer
+     */
+    public function getSecondGrade()
+    {
+        return $this->secondGrade;
+    }
+
+    /**
+     * Set SecondGrade
+     *
+     * @param integer $secondGrade
+     * @return CourseLog
+     */
+    public function setSecondGrade($secondGrade)
+    {
+        $this->secondGrade = $secondGrade;
+
+        return $this;
     }
 
     /**
@@ -170,21 +230,41 @@ class CourseLog {
 
     /**
      * Get CourseId
-     * @return Course
+     * @return string
      */
-    public function getCourseId()
+    public function getCourseCode()
     {
-        return $this->courseId;
+        return $this->courseCode;
     }
 
     /**
-     * Set CourseId
-     * @param Course $courseId
+     * Set CourseCode
+     * @param Course $courseCode
      * @return CourseLog
      */
-    public function setCourseId($courseId)
+    public function setCourseCode($courseCode)
     {
-        $this->courseId = $courseId;
+        $this->courseCode = $courseCode;
+        return $this;
+    }
+
+    /**
+     * Get CourseName
+     * @return string
+     */
+    public function getCourseName()
+    {
+        return $this->courseName;
+    }
+
+    /**
+     * Set CourseName
+     * @param string $courseName
+     * @return CourseLog
+     */
+    public function setCourseName($courseName)
+    {
+        $this->courseName = $courseName;
         return $this;
     }
 

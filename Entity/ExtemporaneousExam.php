@@ -48,9 +48,14 @@ use Doctrine\ORM\Mapping as ORM;
     protected $studentId;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     protected $courseCode;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $courseName;
 
     #########################
     ## OBJECT RELATIONSHIP ##
@@ -222,7 +227,7 @@ use Doctrine\ORM\Mapping as ORM;
 
     /**
      * Get CourseId
-     * @return Course
+     * @return string
      */
     public function getCourseCode()
     {
@@ -237,6 +242,26 @@ use Doctrine\ORM\Mapping as ORM;
     public function setCourseCode($courseCode)
     {
         $this->courseCode = $courseCode;
+        return $this;
+    }
+
+    /**
+     * Get CourseName
+     * @return string
+     */
+    public function getCourseName()
+    {
+        return $this->courseName;
+    }
+
+    /**
+     * Set CourseName
+     * @param string $courseName
+     * @return ExtemporaneousExam
+     */
+    public function setCourseName($courseName)
+    {
+        $this->courseName = $courseName;
         return $this;
     }
 }
