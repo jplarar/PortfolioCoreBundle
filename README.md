@@ -6,7 +6,7 @@ El **portafolio de alumnos** es una plataforma web que recopila la información 
 
 ## Prod Environment
 
-[https://github.com/jplarar/DeployPortfolio]
+https://github.com/jplarar/DeployPortfolio
 
 ## Admin Manual
 El manual admnistrativo contiene más detalles técnicos sobre el desarrollo de este sitio web.
