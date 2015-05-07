@@ -98,7 +98,7 @@ portfolio_control_load_cat_parse:
     pattern:    /load/cat/parse
     defaults:   { _controller: PortfolioCoreBundle:Load:catParse }
 
-#cat
+#cultural
 portfolio_control_load_cultural:
     pattern:    /load/cultural
     defaults:   { _controller: PortfolioCoreBundle:Load:cultural }

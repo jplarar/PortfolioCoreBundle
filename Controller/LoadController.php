@@ -26,6 +26,62 @@ class LoadController extends Controller
         ));
     }
 
+    public function culturalAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:cultural.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function catAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:cat.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function groupAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:group.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function internationalAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:international.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function representativeAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:representative.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function socialAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:social.html.twig', array(
+            'error' => $error
+        ));
+    }
+
+    public function sportAction()
+    {
+        $error = null;
+        return $this->render('PortfolioCoreBundle:Load:sport.html.twig', array(
+            'error' => $error
+        ));
+    }
+
     public function academicParseAction(Request $request)
     {
         /* @var UploadedFile $file */
