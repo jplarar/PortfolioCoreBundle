@@ -206,6 +206,7 @@ class LoadController extends Controller
                 $changeGrade->setGrade($rawCourseLog->getElementsByTagName('grade')->item(0)->nodeValue);
                 $changeGrade->setNewGrade($rawCourseLog->getElementsByTagName('newGrade')->item(0)->nodeValue);
                 $changeGrade->setCourseCode($rawCourseLog->getElementsByTagName('courseCode')->item(0)->nodeValue);
+                $changeGrade->setCourseName($rawCourseLog->getElementsByTagName('courseName')->item(0)->nodeValue);
                 $changeGrade->setStudentId($student);
 
                 $em->persist($changeGrade);
